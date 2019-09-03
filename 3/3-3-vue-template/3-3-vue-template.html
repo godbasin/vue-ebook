@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Vue直接引入Script资源</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script>
+    new Vue({
+      el: "#app",
+      template: "<p>{{ message }}</p>",
+      data() {
+        return {
+          message: "欢迎来到Vue的世界"
+        };
+      },
+      beforeMount() {
+        console.log('beforeMount', this.$el)
+      },
+      mounted() {
+        console.log('mounted', this.$el)
+        this.$nextTick(function () {
+          // 此处整个视图已渲染完毕
+        })
+      }
+    });
+  </script>
+</body>
+
+</html>

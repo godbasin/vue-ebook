@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Vue直接引入Script资源</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">{{ message }}</div>
+  <script>
+    new Vue({
+      // el: "#app",
+      data() {
+        return {
+          message: "欢迎来到Vue的世界"
+        };
+      },
+      mounted: function () {
+        // el 被新创建的 vm.$el 替换，并挂载到实例上去之后调用该钩子
+        // 如果 root 实例挂载了一个文档内元素，当 mounted 被调用时 vm.$el 也在文档内
+
+        // mounted 不会承诺所有的子组件也都一起被挂载
+        // 如果希望等到整个视图都渲染完毕，可以用 vm.$nextTick 替换掉 mounted
+        console.log('mounted', this.$el)
+        this.$nextTick(function () {
+          // 此处整个视图已渲染完毕
+        })
+      }
+    }).$mount("#app");
+  </script>
+</body>
+
+</html>
