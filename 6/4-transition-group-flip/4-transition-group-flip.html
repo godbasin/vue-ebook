@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Vue直接引入Script资源</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+    .list-item {
+      display: inline-block;
+      margin-right: 10px;
+    }
+    .list-enter-active, .list-leave-active {
+      transition: all 1s;
+    }
+    .list-enter, .list-leave-to
+    /* .list-leave-active for below version 2.1.8 */ {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    .list-move {
+      transition: transform 1s;
+    }
+    </style>
+  </head>
+  <body>
+      <div id="list-demo" class="demo">
+        <button v-on:click="add">Add</button>
+        <button v-on:click="remove">Remove</button>
+        <transition-group name="list" tag="p">
+          <span v-for="item in items" v-bind:key="item" class="list-item">
+            {{ item }}
+          </span>
+        </transition-group>
+      </div>
+    <script>
+      new Vue({
+        el: "#list-demo",
+        data: {
+          items: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+          nextNum: 10
+        },
+        methods: {
+          randomIndex: function() {
+            return Math.floor(Math.random() * this.items.length);
+          },
+          add: function() {
+            this.items.splice(this.randomIndex(), 0, this.nextNum++);
+            this.items.splice(this.randomIndex(), 0, this.nextNum++);
+          },
+          remove: function() {
+            this.items.splice(this.randomIndex(), 1);
+            this.items.splice(this.randomIndex(), 1);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

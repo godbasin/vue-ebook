@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Vue直接引入Script资源</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+      <div id="app">
+        <!-- 这是基于 bootstrap 常见的下拉菜单样式 -->
+        <div class="row" style="margin-left: 20px;">
+          <label class="mr5" style="font-size: 14px;">下拉菜单</label>
+          <!-- v-click-outside 绑定方法名 -->
+          <div class="btn-group">
+            <!-- 这里点击会切换菜单是否可见 -->
+            <button
+              type="button"
+              class="btn btn-default dropdown-toggle"
+              @click="isMenuShown = !isMenuShown"
+            >
+              点击 <span class="caret"></span>
+            </button>
+            <transition-group
+              class="dropdown-menu" style="display:block;"
+              name="staggered-fade"
+              tag="ul"
+              :css="false"
+              v-on:before-enter="beforeEnter"
+              v-on:enter="enter"
+              v-on:leave="leave"
+            >
+              <li v-for="(item, index) in itemsShow" :key="item" :data-index="index"><a>{{item}}</a></li>
+            </transition-group>
+          </div>
+        </div>
+      </div>
+      </div>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          items: ["Action", "Another action", "Something else here", "Separated link"],
+          isMenuShown: false
+        },
+        computed: {
+          itemsShow(){
+            return this.items.filter(x => this.isMenuShown)
+          }
+        },
+        methods: {
+          beforeEnter: function(el) {
+            el.style.opacity = 0;
+            el.style.height = 0;
+          },
+          enter: function(el, done) {
+            // 看看这里的定时器延时
+            var delay = el.dataset.index * 800;
+            setTimeout(function() {
+              Velocity(el, { opacity: 1, height: "1.6em" }, { complete: done });
+            }, delay);
+          },
+          leave: function(el, done) {
+            // 还有这里的定时器延时
+            var delay = el.dataset.index * 800;
+            setTimeout(function() {
+              Velocity(el, { opacity: 0, height: 0 }, { complete: done });
+            }, delay);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Vue直接引入Script资源</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous"
+    />
+    <style>
+      html, body, #app{
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        <!-- 这是基于 bootstrap 常见的下拉菜单样式 -->
+        <div class="row" style="margin-left: 20px;">
+          <label class="mr5" style="font-size: 14px;">下拉菜单</label>
+          <!-- v-click-outside 绑定方法名 -->
+          <div class="btn-group" v-click-outside="closeMenu">
+            <!-- 这里点击会切换菜单是否可见 -->
+            <button
+              type="button"
+              class="btn btn-default dropdown-toggle"
+              @click="isMenuShown = !isMenuShown"
+            >
+              点击 <span class="caret"></span>
+            </button>
+            <ul
+              v-show="isMenuShown"
+              class="dropdown-menu"
+              style="display:block;"
+            >
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      new Vue({
+        el: "#app",
+        directives: {
+          "click-outside": {
+            bind: function(el, binding, vnode) {
+              el.event = function(event) {
+                // 检查点击是否发生在节点之内（包括子节点）
+                if (!(el == event.target || el.contains(event.target))) {
+                  // 如果没有，则触发调用
+                  // 若绑定值为函数，则执行
+                  // 这里我们可以通过钩子函数中的 vnode.context，来获取当前组件的作用域
+                  if (typeof vnode.context[binding.expression] == "function") {
+                    vnode.context[binding.expression](event);
+                  }
+                }
+              };
+              // 绑定事件
+              // 设置为true，代表在DOM树中，注册了该listener的元素，会先于它下方的任何事件目标，接收到该事件。
+              document.body.addEventListener("click", el.event, true);
+            },
+            unbind: function(el) {
+              // 解绑事件
+              document.body.removeEventListener("click", el.event, true);
+            }
+          }
+        },
+        data() {
+          return {
+            isMenuShown: false
+          };
+        },
+        methods: {
+          // 该方法将菜单是否可见设置为不可见
+          closeMenu(ev) {
+            console.log({ ev });
+            this.isMenuShown = false;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Vue直接引入Script资源</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/2.2.1/jquery.js"></script>
+  </head>
+  <body>
+      <div id="app">
+          <button @click="show = !show">
+            Toggle
+          </button>
+          <transition v-on:enter="enter" v-on:leave="leave" v-bind:css="false">
+            <p v-if="show">
+              Demo
+            </p>
+          </transition>
+        </div>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          show: false
+        },
+        methods: {
+          enter: (el, done) => {
+            // 元素已被插入 DOM
+            // 在动画结束后调用 done
+            $(el)
+              .css("opacity", 0)
+              .animate({ opacity: 1, fontSize: "100px" }, 200, done);
+          },
+          leave: (el, done) => {
+            // 与 enter 相同
+            $(el).animate({ opacity: 0, fontSize: "0px" }, 200, done);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
