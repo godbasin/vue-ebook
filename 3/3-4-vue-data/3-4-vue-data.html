@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Vue直接引入Script资源</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+      <div>{{ message }}</div>
+      <div v-once>{{ message }}</div>
+      <div v-html="message"></div>
+    
+      <div>{{ msgHtml }}</div>
+      <div v-html="msgHtml"></div>
+  </div>
+  <script>
+    new Vue({
+      el: "#app",
+      data() {
+        return {
+          message: "欢迎来到Vue的世界",
+          msgHtml: "<p style='color: red'>欢迎来到红色Vue的世界</p>"
+        };
+      },
+      created() {
+        this.message = "啦啦啦啦啦啦"
+      },
+      beforeMount() {
+        this.message = "哈哈哈哈哈哈哈"
+      },
+      mounted() {
+        this.message = "略略略略略"
+      }
+    });
+  </script>
+</body>
+
+</html>
