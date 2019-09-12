@@ -105,9 +105,15 @@ export default({
     cancelEdit(){
       this.editedTodo = {}
     },
+    // 删除备忘
+    removeTodo(todo){
+      // 匹配 id 找出该备忘，然后移除
+      const index = this.todos.findIndex(x => x.id === todo.id)
+      this.todos.splice(index, 1)
+    },
     // 删除已完成的备忘
     removeCompleted() {
-      this.todos = this.todos.filter(x => x.completed)
+      this.todos = this.todos.filter(x => !x.completed)
     }
   }
 })
