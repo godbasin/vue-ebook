@@ -1,30 +1,33 @@
 <template>
-  <div>
-    <el-container>
-      <el-header>配置化表单</el-header>
-
-      <el-main>
-        <DynamicForm :formComponentList="formComponentList">
-          <el-form-item>
-            <el-button type="primary" @click="onSubmit">立即创建</el-button>
-            <el-button>取消</el-button>
-          </el-form-item>
-        </DynamicForm>
-        </el-main>
-    </el-container>
-  </div>
+  <el-container>
+    <el-header>配置化表单</el-header>
+    <el-main>
+      <!-- 传入 formComponentList 配置数据 -->
+      <DynamicForm :formComponentList="formComponentList">
+        <!-- 中间的内容会替换掉 slot -->
+        <!-- 这里传入了创建和取消的按钮 -->
+        <el-form-item>
+          <el-button type="primary" @click="onSubmit">立即创建</el-button>
+          <el-button>取消</el-button>
+        </el-form-item>
+      </DynamicForm>
+      </el-main>
+  </el-container>
 </template>
 
 <script>
+// 引入动态表单组件
 import DynamicForm from './components/DynamicForm.vue'
 
 export default {
   name: 'app',
   components: {
+    // 使用动态表单组件
     DynamicForm
   },
   data() {
     return {
+      // 配置表单相关的属性和数据
       formComponentList: [
         {
           componentName: 'el-input',
@@ -74,14 +77,10 @@ export default {
   },
   methods: {
     onSubmit(){
-      console.log({formComponentList: this.formComponentList })
+      // 点击提交的时候，将值筛选出来
+      const formValueList = this.formComponentList.map(x => x.value)
+      console.log({formValueList})
     }
   },
 }
 </script>
-
-<style>
-body {
-  margin: 0;
-}
-</style>

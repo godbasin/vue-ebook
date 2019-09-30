@@ -1,6 +1,6 @@
 <template>
-  <!-- 设置外层高度，jsoneditor 会根据外层高度来初始化 -->
-  <div style="height: 600px">
+  <!-- 可配置外层高度，jsoneditor 会根据外层高度来初始化 -->
+  <div :style="{height: height}">
     <!-- 提供一个绑定 id 的元素进行初始化 -->
     <div id="jsoneditor"></div>
   </div>
@@ -24,6 +24,11 @@ export default {
   },
   // 配置 Prop 属性
   props: {
+    // 高度可配置
+    height: {
+      type: String,
+      default: ''
+    },
     // 传入配置项，可用于更新配置
     options: {
       type: Object,
