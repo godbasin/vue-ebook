@@ -15,7 +15,7 @@
 // 弹窗组件
 import ConfirmDialog from "./components/ConfirmDialog"
 // 获取 Vue 实例
-import vm from './main';
+import eventBus from './utils/eventBus';
 
 export default {
   name: 'app',
@@ -29,7 +29,7 @@ export default {
     // DOM 还没有更新
     this.$nextTick(() => {
       // DOM 现在更新了
-      vm.$on("setDialog", (dialogInfo) => {
+      eventBus.on("setDialog", (dialogInfo) => {
         // 将弹窗相关信息、弹窗组件添加进 component 数组中
         this.items.push({dialogInfo, component: ConfirmDialog})
       })
