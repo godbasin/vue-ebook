@@ -59,6 +59,7 @@ module.exports = {
                         '/vue-ebook/13.md',
                         '/vue-ebook/14.md',
                         '/vue-ebook/15.md',
+                        '/vue-ebook/16.md',
                     ]
                 }, {
                     title: '后记',
