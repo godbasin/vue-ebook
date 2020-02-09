@@ -1,11 +1,41 @@
 # 深入理解 Vue.js 实战
 
+本书为开源的 Vue.js 教程，全面介绍 Vue.js 框架的出现、设计和使用，结合实战让读者更深入理解 Vue.js 框架，掌握使用方法。
+
+- 本书内容基于 Vue.js 2.x 版本
 - [本书地址](https://godbasin.github.io/vue-ebook/)
-- 本书相关代码存放在[vue-sourcecode 分支](https://github.com/godbasin/vue-ebook/tree/vue-sourcecode)
+- [本书Github](https://github.com/godbasin/vue-ebook/)
 
-《深入理解 Vue.js 实战》是一本开源的 Vue.js 教程，全面介绍 Vue.js 框架的出现、设计和使用，结合实战让读者更深入理解 Vue.js 框架，掌握使用方法。
+## 结构和内容
+本书共分为两部分。第一部分介绍Vue快速入门，结合Vue基础、Vue框架与设计，以及一些简单的代码实例来快速入门。第二部分介绍Vue的正确使用方式，包括在日常开发中，常见的使用方式和项目实战。
 
-本书内容基于 Vue.js 2.x 版本，对 Vue.js 给予详细的介绍，并给出大量简洁易懂的示例代码。
+### 第一部分 Vue快速入门
+
+该部分包括8章内容：
+- [第1章 Vue 框架介绍](https://godbasin.github.io/vue-ebook/vue-ebook/1.html)
+- [第2章 Vue 环境快速搭建](https://godbasin.github.io/vue-ebook/vue-ebook/2.html)
+- [第3章 Vue 基础介绍](https://godbasin.github.io/vue-ebook/vue-ebook/3.html)
+- [第4章 Vue 组件的使用](https://godbasin.github.io/vue-ebook/vue-ebook/4.html)
+- [第5章 常用指令和自定义指令](https://godbasin.github.io/vue-ebook/vue-ebook/5.html)
+- [第6章 Vue 动画](https://godbasin.github.io/vue-ebook/vue-ebook/6.html)
+- [第7章 Vue Router 路由搭建应用](https://godbasin.github.io/vue-ebook/vue-ebook/7.html)
+- [第8章 实战：Todo List 从组件到应用](https://godbasin.github.io/vue-ebook/vue-ebook/8.html)
+
+### 第二部分 Vue的正确使用方式
+
+该部分包括8章内容：
+- [第9章 思维转变与大型项目管理](https://godbasin.github.io/vue-ebook/vue-ebook/9.html)
+- [第10章 如何正确地进行抽象](https://godbasin.github.io/vue-ebook/vue-ebook/10.html)
+- [第11章 全局数据管理与 Vuex](https://godbasin.github.io/vue-ebook/vue-ebook/11.html)
+- [第12章 实战：三天开发一个管理端](https://godbasin.github.io/vue-ebook/vue-ebook/12.html)
+- [第13章 实战：表单配置化实现](https://godbasin.github.io/vue-ebook/vue-ebook/13.html)
+- [第14章 实战：使用 Webpack 或 Vue CLI 搭建多页应用](https://godbasin.github.io/vue-ebook/vue-ebook/14.html)
+- [第15章 Vue 周边拓展](https://godbasin.github.io/vue-ebook/vue-ebook/15.html)
+- [第16章 关于 Vue 3.0](https://godbasin.github.io/vue-ebook/vue-ebook/16.html)
+
+除此之外，本书分别在[前言 前端框架的出现](https://godbasin.github.io/vue-ebook/vue-ebook/0.html)中介绍了前端框架的出现、Vue.js框架原理，以及在[后记 关于框架选型](https://godbasin.github.io/vue-ebook/vue-ebook/99.html)中介绍了项目选型要如何进行决策。
+
+同时，本书相关代码存放在[Github vue-sourcecode 分支](https://github.com/godbasin/vue-ebook/tree/vue-sourcecode)，书中涉及的代码示例基本可以在这里找到。
 
 ## 本书说明
 
