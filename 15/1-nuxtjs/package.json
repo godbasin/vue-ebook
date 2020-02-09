@@ -1,0 +1,22 @@
+{
+  "name": "1-nuxtjs",
+  "version": "1.0.0",
+  "description": "My first-class Nuxt.js project",
+  "author": "godbasin",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
+    "build": "nuxt build",
+    "start": "cross-env NODE_ENV=production node server/index.js",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "nuxt": "^2.0.0",
+    "cross-env": "^5.2.0",
+    "express": "^4.16.4",
+    "element-ui": "^2.4.11"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
+}
