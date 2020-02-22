@@ -1,5 +1,5 @@
 module.exports = {
-    title: '深入理解Vue.js与实战',
+    title: '深入理解Vue.js实战',
     base: '/vue-ebook/',
     shouldPrefetch: () => false,
     description: '作者：被删',
@@ -18,7 +18,7 @@ module.exports = {
         // 假如文档不是放在仓库的根目录下：
         docsDir: 'docs',
         // 假如文档放在一个特定的分支下：
-        docsBranch: 'sourcecode',
+        docsBranch: 'ebook-sourcecode',
         // 默认是 false, 设置为 true 来启用
         editLinks: true,
         // 默认为 "Edit this page"
