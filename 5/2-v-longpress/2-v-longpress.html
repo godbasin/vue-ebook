@@ -58,23 +58,23 @@
                 binding.value(e);
               };
               // 添加事件监听器
-              document.body.addEventListener("mousedown", el.startEvent, true);
-              document.body.addEventListener("touchstart", el.startEvent, true);
+              el.addEventListener("mousedown", el.startEvent, true);
+              el.addEventListener("touchstart", el.startEvent, true);
               // 取消计时器
-              document.body.addEventListener("click", el.cancelEvent, true);
-              document.body.addEventListener("mouseout", el.cancelEvent, true);
-              document.body.addEventListener("touchend", el.cancelEvent, true);
-              document.body.addEventListener("touchcancel", el.cancelEvent, true);
+              el.addEventListener("click", el.cancelEvent, true);
+              el.addEventListener("mouseout", el.cancelEvent, true);
+              el.addEventListener("touchend", el.cancelEvent, true);
+              el.addEventListener("touchcancel", el.cancelEvent, true);
             },
             unbind: function(el) {
               // 解绑事件
-              document.body.removeEventListener("mousedown", el.startEvent, true);
-              document.body.removeEventListener("touchstart", el.startEvent, true);
+              el.removeEventListener("mousedown", el.startEvent, true);
+              el.removeEventListener("touchstart", el.startEvent, true);
               // 取消计时器
-              document.body.removeEventListener("click", el.cancelEvent, true);
-              document.body.removeEventListener("mouseout", el.cancelEvent, true);
-              document.body.removeEventListener("touchend", el.cancelEvent, true);
-              document.body.removeEventListener("touchcancel", el.cancelEvent, true);
+              el.removeEventListener("click", el.cancelEvent, true);
+              el.removeEventListener("mouseout", el.cancelEvent, true);
+              el.removeEventListener("touchend", el.cancelEvent, true);
+              el.removeEventListener("touchcancel", el.cancelEvent, true);
             }
           }
         },
