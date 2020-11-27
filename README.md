@@ -4,6 +4,7 @@
 
 - 本书内容基于 Vue.js 2.x 版本
 - [本书地址](https://godbasin.github.io/vue-ebook/)
+- [如果Github Pages访问不了，可以访问这里](http://www.godbasin.com/vue-ebook/)
 - [本书Github](https://github.com/godbasin/vue-ebook/)
 
 ## 结构和内容
