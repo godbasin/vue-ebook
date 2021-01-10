@@ -6,6 +6,7 @@
 - [本书地址](https://godbasin.github.io/vue-ebook/)
 - [如果Github Pages访问不了，可以访问这里](http://www.godbasin.com/vue-ebook/)
 - [本书Github](https://github.com/godbasin/vue-ebook/)
+- 这本书已上架图灵电子书，欢迎阅读: [https://www.ituring.com.cn/book/2941](https://www.ituring.com.cn/book/2941)
 
 ## 结构和内容
 

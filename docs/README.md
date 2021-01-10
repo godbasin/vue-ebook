@@ -23,6 +23,8 @@ footer: MIT Licensed | Copyright ©2020-present 被删
 
 而将这些内容整理下来，开源给到更多有需要的人便是我的本意。本书的完成特别感谢图灵出版社的张霞编辑，在她的帮助下该书有了完整的写作方向，同时十分感谢张霞编辑支持本人最终进行开源的选择。
 
+> 这本书已上架图灵电子书，欢迎阅读: [https://www.ituring.com.cn/book/2941](https://www.ituring.com.cn/book/2941)
+
 <br />
 <br />
 
