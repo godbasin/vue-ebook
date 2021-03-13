@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>第15章 Vue 周边拓展 | 深入理解Vue.js实战</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="作者：被删">
+    
+    <link rel="preload" href="/vue-ebook/assets/css/0.styles.77f3552e.css" as="style"><link rel="preload" href="/vue-ebook/assets/js/app.2f410bb9.js" as="script"><link rel="preload" href="/vue-ebook/assets/js/2.d60fd2a5.js" as="script"><link rel="preload" href="/vue-ebook/assets/js/3.c15c8d98.js" as="script"><link rel="preload" href="/vue-ebook/assets/js/14.6e36d276.js" as="script">
+    <link rel="stylesheet" href="/vue-ebook/assets/css/0.styles.77f3552e.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/vue-ebook/" class="home-link router-link-active"><!----> <span class="site-name">深入理解Vue.js实战</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/vue-ebook/" class="nav-link">概述</a></div><div class="nav-item"><a href="/vue-ebook/vue-ebook/" class="nav-link router-link-active">内容</a></div> <a href="https://github.com/godbasin/vue-ebook" target="_blank" rel="noopener noreferrer" class="repo-link">
+    Github
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/vue-ebook/" class="nav-link">概述</a></div><div class="nav-item"><a href="/vue-ebook/vue-ebook/" class="nav-link router-link-active">内容</a></div> <a href="https://github.com/godbasin/vue-ebook" target="_blank" rel="noopener noreferrer" class="repo-link">
+    Github
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0" style="padding-top:;"><!----> <p class="sidebar-heading"><span>前言</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/vue-ebook/vue-ebook/0.html" class="sidebar-link">前端框架的出现</a></li></ul></section></li><li><section class="sidebar-group depth-0" style="padding-top:;"><!----> <p class="sidebar-heading"><span>第一部分 Vue快速入门</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/vue-ebook/vue-ebook/1.html" class="sidebar-link">第1章 Vue 框架介绍</a></li><li><a href="/vue-ebook/vue-ebook/2.html" class="sidebar-link">第2章 Vue 环境快速搭建</a></li><li><a href="/vue-ebook/vue-ebook/3.html" class="sidebar-link">第3章 Vue 基础介绍</a></li><li><a href="/vue-ebook/vue-ebook/4.html" class="sidebar-link">第4章 Vue 组件的使用</a></li><li><a href="/vue-ebook/vue-ebook/5.html" class="sidebar-link">第5章 常用指令和自定义指令</a></li><li><a href="/vue-ebook/vue-ebook/6.html" class="sidebar-link">第6章 Vue 动画</a></li><li><a href="/vue-ebook/vue-ebook/7.html" class="sidebar-link">第7章 Vue Router 路由搭建应用</a></li><li><a href="/vue-ebook/vue-ebook/8.html" class="sidebar-link">第8章 实战：Todo List 从组件到应用</a></li></ul></section></li><li><section class="sidebar-group depth-0" style="padding-top:10px;"><div class="kitty-main" data-v-2b653b36><span class="stand" data-v-2b653b36></span> <div class="cat" data-v-2b653b36><div class="body" data-v-2b653b36></div> <div class="head" data-v-2b653b36><div class="ear" data-v-2b653b36></div> <div class="ear" data-v-2b653b36></div></div> <div class="face" data-v-2b653b36><div class="nose" data-v-2b653b36></div> <div class="whisker-container" data-v-2b653b36><div class="whisker" data-v-2b653b36></div> <div class="whisker" data-v-2b653b36></div></div> <div class="whisker-container" data-v-2b653b36><div class="whisker" data-v-2b653b36></div> <div class="whisker" data-v-2b653b36></div></div></div> <div class="tail-container" data-v-2b653b36><div class="tail" data-v-2b653b36><div class="tail" data-v-2b653b36><div class="tail" data-v-2b653b36><div class="tail" data-v-2b653b36><div class="tail" data-v-2b653b36><div class="tail" data-v-2b653b36><div class="tail" data-v-2b653b36></div></div></div></div></div></div></div></div></div></div> <p class="sidebar-heading open"><span>第二部分 Vue的正确使用方式</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/vue-ebook/vue-ebook/9.html" class="sidebar-link">第9章 思维转变与大型项目管理</a></li><li><a href="/vue-ebook/vue-ebook/10.html" class="sidebar-link">第10章 如何正确地进行抽象</a></li><li><a href="/vue-ebook/vue-ebook/11.html" class="sidebar-link">第11章 全局数据管理与 Vuex</a></li><li><a href="/vue-ebook/vue-ebook/12.html" class="sidebar-link">第12章 实战：三天开发一个管理端</a></li><li><a href="/vue-ebook/vue-ebook/13.html" class="sidebar-link">第13章 实战：表单配置化实现</a></li><li><a href="/vue-ebook/vue-ebook/14.html" class="sidebar-link">第14章 实战：使用 Webpack 或 Vue CLI 搭建多页应用</a></li><li><a href="/vue-ebook/vue-ebook/15.html" aria-current="page" class="active sidebar-link">第15章 Vue 周边拓展</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vue-ebook/vue-ebook/15.html#_15-1-vuepress-快速搭建文档平台" class="sidebar-link">15.1 VuePress 快速搭建文档平台</a></li><li class="sidebar-sub-header"><a href="/vue-ebook/vue-ebook/15.html#_15-2-vue-生成-web-与小程序" class="sidebar-link">15.2 Vue 生成 web 与小程序</a></li><li class="sidebar-sub-header"><a href="/vue-ebook/vue-ebook/15.html#_15-3-其他-vue-周边" class="sidebar-link">15.3 其他 Vue 周边</a></li></ul></li><li><a href="/vue-ebook/vue-ebook/16.html" class="sidebar-link">第16章 关于 Vue 3.0</a></li></ul></section></li><li><section class="sidebar-group depth-0" style="padding-top:;"><!----> <p class="sidebar-heading"><span>后记</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/vue-ebook/vue-ebook/99.html" class="sidebar-link">关于框架选型</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="第15章-vue-周边拓展"><a href="#第15章-vue-周边拓展" class="header-anchor">#</a> 第15章 Vue 周边拓展</h1> <blockquote><p>本章节相关代码存放在<a href="https://github.com/godbasin/vue-ebook/tree/vue-sourcecode/15" target="_blank" rel="noopener noreferrer">Github<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>中。</p></blockquote> <p>Vue 生态如今越来越完善了，随之而来也有了不少的周边。除了前面的 Vue Loader、Vuex、Vue CLI 等常用工具，这里也介绍一些可以使用 Vue 进行开发的周边拓展工具，包括 Vuepress、Vue 生成小程序等。</p> <h2 id="_15-1-vuepress-快速搭建文档平台"><a href="#_15-1-vuepress-快速搭建文档平台" class="header-anchor">#</a> 15.1 VuePress 快速搭建文档平台</h2> <p>VuePress 是 Vue 驱动的静态网站生成工具，基于 Markdown 维护的文档网站。如果你有自己的博客，那应该也了解过 Hexo 工具，而 VuePress 可以理解为一个 Vue 版本的 Hexo。基于 Vue 和 Webpack 的开发方式，可以让开发者简单又便捷地实现一些想要的功能。</p> <h3 id="_15-1-1-vuepress-介绍"><a href="#_15-1-1-vuepress-介绍" class="header-anchor">#</a> 15.1.1 VuePress 介绍</h3> <p>一个 VuePress 网站其实是一个由 Vue、Vue Router 和 Webpack 驱动的单页应用。虽然和 Nuxt.js 很相似，但相比于 Nuxt.js 用于应用程序的构建，VuePress 专注于以内容为中心的静态网站。VuePress 由两部分组成：<br>
+(1) 由 Vue 驱动的极简静态网站生成器。我们在初始化项目之后，只需要添加 Markdown 文档，以及进行简单的配置就可以生成一个功能完备的静态网站（包括菜单、导航、路由、搜索等功能）。<br>
+(2) 提供基于技术文档的默认主题（可以参考 Vue 官方主题样式），同时也支持自定义配置主题方式。</p> <p>对比 Hexo，VuePress 最大的亮点在于，除了通用的 Markdown 能力之外，VuePress 允许在 Markdown 中使用 Vue，也就是说我们写着 Markdown 的过程中可以插入一个 Vue 组件。而基于 Vue 的驱动方式，我们可以使用 Vue 自由地调整默认主题和样式，对于熟悉 Vue 开发的小伙伴来说，开发效率有了质的提升。</p> <h3 id="_15-1-2-快速开发静态网站"><a href="#_15-1-2-快速开发静态网站" class="header-anchor">#</a> 15.1.2 快速开发静态网站</h3> <p>介绍了那么多，我们来看一下使用 VuePress 生成一个静态网站到底有多简单。</p> <h4 id="安装和使用"><a href="#安装和使用" class="header-anchor">#</a> 安装和使用</h4> <p>首先我们需要安装依赖，完整的开发和构建流程步骤如下。</p> <p><strong>(1) 安装依赖。</strong></p> <div class="language-cmd extra-class"><pre class="language-text"><code># 全局安装 vuepress
+npm install -g vuepress
+
+# 安装依赖
+npm install
+</code></pre></div><p><strong>(2) 目录结构设计。</strong><br>
+为了方便管理，我们创建一个 docs 文件夹，将一些 markdown 文档放在里面维护，文件夹外面就可以做一些简单的依赖管理、脚本等。整体来说，我们的目录结构如下：</p> <div class="language-cmd extra-class"><pre class="language-text"><code>├─docs/                     // vuepress根目录
+│  ├─.vuepress/             // vuepress应用相关
+│  │   ├─dist/              // 编译之后的静态文件
+│  │   ├─theme/             // 自定义主题
+│  │   ├─config.js          // 配置
+│  │   ├─enhanceApp.js      // 应用级别的配置
+│  ├─basic/                 // 基础类文档
+│  ├─vue/                   // Vue类文档
+│  ├─README.md              // 首页文档和配置
+│
+├─deploy.sh                 // 部署到Github脚本
+├─package.json              // 项目配置
+├─README.md                 // 项目说明
+</code></pre></div><p>VuePress 应用相关的配置都放置在.vuepress 文件夹下，关于自定义主题、配置和应用级别的配置后面会一点点描述。其他的文档归类可根据文档类别进行文件夹的区分，而 docs 下的默认 README.md 则是首页内容。</p> <p>基于这样的目录结构，我们可以确定如何进行开发和打包，因此可以在 package.json 配置：</p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+  <span class="token property">&quot;scripts&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;docs:dev&quot;</span><span class="token operator">:</span> <span class="token string">&quot;vuepress dev docs&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;docs:build&quot;</span><span class="token operator">:</span> <span class="token string">&quot;vuepress build docs&quot;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>然后我们可以通过命令来进行：</p> <div class="language-cmd extra-class"><pre class="language-text"><code># 本地开始写作
+npm run docs:dev
+
+# 构建生成静态文件
+npm run docs:build
+</code></pre></div><p><strong>(3) 文档内容管理填充。</strong><br>
+这里我们分了基础类文档和 Vue 类文档，分别放置在<code>docs/basic</code>和<code>docs/vue</code>目录下面，在将 markdown 挪到对应的地方之后，我们可以这么进行组织：</p> <div class="language-cmd extra-class"><pre class="language-text"><code>├─docs/                     // vuepress根目录
+│  ├─....                   // 其他省略
+│  ├─basic/                 // 基础类文档
+│  │  ├─1/                  // 基础类文档分类1
+│  │  ├─2/                  // 基础类文档分类2
+│  │  ├─README.md           // 基础类文档默认页
+│  ├─vue/                   // Vue类文档
+│  │  ├─1/                  // Vue类文档分类1
+│  │  ├─2/                  // Vue类文档分类2
+│  │  ├─README.md           // Vue类文档默认页
+│  ├─README.md              // 首页文档和配置
+│
+├─....                      // 其他省略
+</code></pre></div><p>调整好内容之后，我们来看看要怎么配置。</p> <p><strong>(4) 首页配置。</strong><br>
+默认的主题提供了一个首页（Homepage）的布局这里，我们直接使用它，所以在根级的 README 中进行以下配置：</p> <div class="language-md extra-class"><pre class="language-md"><code><span class="token title important"><span class="token punctuation">##</span> </span><span class="token comment">&lt;!-- docs/README.md --&gt;</span>
+
+home: true # 使用默认主题的首页布局
+actionText: 快速阅读 →
+actionLink: /basic/1/basic-1-1.md
+features:
+
+<span class="token list punctuation">-</span> title: 基础类文档
+  details: 基础类文档描述。
+<span class="token list punctuation">-</span> title: Vue 类文档
+  details: Vue 类文档描述。
+<span class="token list punctuation">-</span> title: 其他补充
+  details: 其他补充描述。
+  footer: MIT Licensed | Copyright © 2018-present 被删
+
+<span class="token hr punctuation">---</span>
+</code></pre></div><p><strong>(5) 默认配置。</strong><br>
+想要项目顺利跑起来，我们还需要补充默认配置，需要在 docs/.express 文件夹下添加 config.js 文件：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// docs/.express/config.js</span>
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  title<span class="token operator">:</span> <span class="token string">&quot;某个前端文档网站&quot;</span><span class="token punctuation">,</span> <span class="token comment">// 首页标题</span>
+  <span class="token function-variable function">shouldPrefetch</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token comment">// 关闭预加载，可能导致首页渲染比较慢</span>
+  description<span class="token operator">:</span> <span class="token string">&quot;Just playing around&quot;</span><span class="token punctuation">,</span> <span class="token comment">// 首页描述</span>
+  themeConfig<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// logo: '/assets/img/logo.png',</span>
+    <span class="token comment">// 假定是 GitHub. 同时也可以是一个完整的 GitLab URL</span>
+    repo<span class="token operator">:</span> <span class="token string">&quot;godbasin/vuepress-demo&quot;</span><span class="token punctuation">,</span>
+    <span class="token comment">// 自定义仓库链接文字。默认从 `themeConfig.repo` 中自动推断为</span>
+    <span class="token comment">// &quot;GitHub&quot;/&quot;GitLab&quot;/&quot;Bitbucket&quot; 其中之一，或是 &quot;Source&quot;。</span>
+    repoLabel<span class="token operator">:</span> <span class="token string">&quot;Github&quot;</span><span class="token punctuation">,</span>
+    <span class="token comment">// 假如你的文档仓库和项目本身不在一个仓库：</span>
+    <span class="token comment">// docsRepo: 'vuejs/vuepress',</span>
+    <span class="token comment">// 假如文档不是放在仓库的根目录下：</span>
+    <span class="token comment">// 这里我们是放置在docs下的</span>
+    docsDir<span class="token operator">:</span> <span class="token string">&quot;docs&quot;</span><span class="token punctuation">,</span>
+    <span class="token comment">// 假如文档放在一个特定的分支下：</span>
+    <span class="token comment">// 这里我们放在一个叫sourcecode的分支下，因为master需要用来放置生成的静态文件</span>
+    docsBranch<span class="token operator">:</span> <span class="token string">&quot;sourcecode&quot;</span><span class="token punctuation">,</span>
+    <span class="token comment">// 顶部导航配置</span>
+    nav<span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span> text<span class="token operator">:</span> <span class="token string">&quot;概述&quot;</span><span class="token punctuation">,</span> link<span class="token operator">:</span> <span class="token string">&quot;/&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span> text<span class="token operator">:</span> <span class="token string">&quot;基础类文档&quot;</span><span class="token punctuation">,</span> link<span class="token operator">:</span> <span class="token string">&quot;/basic/&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span> text<span class="token operator">:</span> <span class="token string">&quot;Vue类文档&quot;</span><span class="token punctuation">,</span> link<span class="token operator">:</span> <span class="token string">&quot;/vue/&quot;</span> <span class="token punctuation">}</span>
+      <span class="token comment">// 我们也可以添加FAQ的</span>
+      <span class="token comment">// { text: 'FAQ', link: '/faq' }</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token comment">// 左侧导航菜单配置</span>
+    sidebar<span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token string">&quot;/basic/&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+          title<span class="token operator">:</span> <span class="token string">&quot;基础类文档分类1&quot;</span><span class="token punctuation">,</span> <span class="token comment">// 菜单名</span>
+          collapsable<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// 是否支持折叠菜单</span>
+          children<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;/basic/1/basic-1-1.md&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;/basic/1/basic-1-2.md&quot;</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+          title<span class="token operator">:</span> <span class="token string">&quot;基础类文档分类2&quot;</span><span class="token punctuation">,</span> <span class="token comment">// 菜单名</span>
+          collapsable<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// 是否支持折叠菜单</span>
+          children<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;/basic/2/basic-2-1.md&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;/basic/2/basic-2-2.md&quot;</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;/vue/&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+          title<span class="token operator">:</span> <span class="token string">&quot;Vue类文档分类1&quot;</span><span class="token punctuation">,</span> <span class="token comment">// 菜单名</span>
+          collapsable<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// 是否支持折叠菜单</span>
+          children<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;/vue/1/vue-1-1.md&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;/vue/1/vue-1-2.md&quot;</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+          title<span class="token operator">:</span> <span class="token string">&quot;Vue类文档分类2&quot;</span><span class="token punctuation">,</span> <span class="token comment">// 菜单名</span>
+          collapsable<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// 是否支持折叠菜单</span>
+          children<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;/vue/2/vue-2-1.md&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;/vue/2/vue-2-2.md&quot;</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><p><strong>(6) 启动项目。</strong><br>
+配置完成后，我们可以使用<code>npm run docs:dev</code>来启动本地环境，能看到环境搭建起来了：</p> <p><img src="https://github-imglib-1255459943.cos.ap-chengdu.myqcloud.com/vue-15-1.jpg" alt="image"><br>
+图 15-1 本地环境启动</p> <p>然后我们可以看到页面效果：
+<img src="https://github-imglib-1255459943.cos.ap-chengdu.myqcloud.com/vue-15-2.jpg" alt="首页"><br>
+图 15-2 首页效果</p> <p><img src="https://github-imglib-1255459943.cos.ap-chengdu.myqcloud.com/vue-15-3.jpg" alt="Vue类文档默认页"><br>
+图 15-3 Vue 类文档默认页效果</p> <p>到这里，我们可以快速简单地将文档管理起来。</p> <h4 id="添加组件使用"><a href="#添加组件使用" class="header-anchor">#</a> 添加组件使用</h4> <p>接下来我们需要添加自己的组件，例如我想在首页中添加一个弹窗。</p> <p><strong>(1) 全局引入 Element。</strong><br>
+这里我想要直接使用 Element 的弹窗样式，可以通过引入 Element 来直接使用，首先我们需要执行<code>npm install element-ui</code>来安装 Element。同时，我们可以通过创建一个<code>.vuepress/enhanceApp.js</code>文件来做一些应用级别的配置:</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// docs/.vuepress/enhanceApp.js</span>
+<span class="token comment">// 当该文件存在的时候，会被导入到应用内部</span>
+
+<span class="token comment">// 引入ElementUI</span>
+<span class="token keyword">import</span> ElementUI <span class="token keyword">from</span> <span class="token string">&quot;element-ui&quot;</span><span class="token punctuation">;</span>
+<span class="token comment">// 全局引入样式</span>
+<span class="token keyword">import</span> <span class="token string">&quot;element-ui/lib/theme-chalk/index.css&quot;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+  Vue <span class="token comment">// VuePress 正在使用的 Vue 构造函数</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 使用element-ui</span>
+    Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>ElementUI<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><p>到这里，我们已经全局引入了 ElementUI 库，接下来可以直接在文档中使用了。</p> <p><strong>(2) 在 Markdown 文档中使用 Vue 组件。</strong><br>
+一般来说，所有在<code>.vuepress/components</code>中找到的*.vue 文件将会自动地被注册为全局的异步组件，例如这里我们增加一个 Element 的弹窗：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token comment">&lt;!-- docs/.vuepress/components/MyDialog.vue --&gt;</span>
+<span class="token comment">&lt;!-- 这里直接使用Element官方弹窗的代码 --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>el-button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>text<span class="token punctuation">&quot;</span></span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>open<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>点击打开 Message Box<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>el-button</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+    methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token function">open</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">$alert</span><span class="token punctuation">(</span><span class="token string">&quot;这是一段内容&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;标题名称&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+          confirmButtonText<span class="token operator">:</span> <span class="token string">&quot;确定&quot;</span><span class="token punctuation">,</span>
+          <span class="token function-variable function">callback</span><span class="token operator">:</span> <span class="token parameter">action</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">$message</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+              type<span class="token operator">:</span> <span class="token string">&quot;info&quot;</span><span class="token punctuation">,</span>
+              message<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">action: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>action<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>然后我们可以直接使用这些组件在任意的 Markdown 文件中（组件名是通过文件名取到的），例如这里我们在首页中使用：</p> <div class="language-md extra-class"><pre class="language-md"><code><span class="token title important"><span class="token punctuation">##</span> </span><span class="token comment">&lt;!-- docs/README.md --&gt;</span>
+
+home: true
+actionText: 快速阅读 →
+actionLink: /basic/1/basic-1-1.md
+features:
+
+<span class="token list punctuation">-</span> title: 基础类文档
+  details: 基础类文档描述。
+<span class="token list punctuation">-</span> title: Vue 类文档
+  details: Vue 类文档描述。
+<span class="token list punctuation">-</span> title: 其他补充
+  details: 其他补充描述。
+  footer: MIT Licensed | Copyright © 2018-present 被删
+
+<span class="token hr punctuation">---</span>
+
+<span class="token title important"><span class="token punctuation">#</span> Element 弹窗</span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>MyDialog</span><span class="token punctuation">/&gt;</span></span>
+</code></pre></div><p>然后我们就可以看到效果：<br> <img src="https://github-imglib-1255459943.cos.ap-chengdu.myqcloud.com/vue-15-4.jpg" alt="首页"><br>
+图 15-4 首页效果</p> <p><img src="https://github-imglib-1255459943.cos.ap-chengdu.myqcloud.com/vue-15-5.jpg" alt="点击后出现弹窗"><br>
+图 15-5 点击后出现弹窗</p> <blockquote><p><a href="https://github.com/godbasin/vue-ebook/tree/vue-sourcecode/15/2-vuepress" target="_blank" rel="noopener noreferrer">点击此处查看源码<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></blockquote> <p>对于 VuePress，快速生成可用主题和配置是它的一大亮点，而直接在 Markdown 文件中使用 Vue 组件则是特别便利实用的另外一个特色。当然，VuePress 还支持自定义主题配置，不过这里篇幅关系就不多介绍，大家感兴趣可以去官网查看，也可以去https://github.com/godbasin/front-end-playground查看使用VuePress搭建的前端游乐场，源码在sourcecode分支。</p> <h2 id="_15-2-vue-生成-web-与小程序"><a href="#_15-2-vue-生成-web-与小程序" class="header-anchor">#</a> 15.2 Vue 生成 web 与小程序</h2> <p>如今，小程序用完即走、无需安装的便捷吸引了越来越多的用户愿意使用，同时微信提供的流量吸引了不少的小程序开发者加入其中。小程序有一套自己的规范，与常用的几大框架都不好进行兼容，我们来看一下为什么。</p> <h3 id="_15-2-1-小程序与-web-的区别"><a href="#_15-2-1-小程序与-web-的区别" class="header-anchor">#</a> 15.2.1 小程序与 Web 的区别</h3> <p>小程序的渲染层和逻辑层分别由两个线程管理：渲染层的界面使用了 WebView 进行渲染，逻辑层采用 JsCore 线程运行 JS 脚本。通过双线程的方式，我们可以阻止开发者使用一些浏览器提供的，诸如跳转页面、操作 DOM、动态执行脚本的开放性接口，来保证小程序的安全性，也方便平台进行管控。但是这样的设计也带来其他的问题，逻辑层和渲染层的通信（<code>setData</code>）需要由 Native（微信客户端）做中转，逻辑层发送网络请求也经由 Native 转发。以上这些情况意味着：<br>
+(1) 在浏览器中可以运行的 DOM、BOM 等对象和 API，都无法在小程序中使用。<br>
+(2) 小程序的一些 API 使用方式与浏览器不一致（请求、缓存等）。</p> <p>对于强交互的场景（通信过多容易引起性能问题），小程序引入了原生组件，这样用户和原生组件的交互可以节省通信，从而提升性能。但这样还意味着：<br>
+(3) 在浏览器中可以使用的组件，在小程序中成了原生组件（input、video、canvas 等），使用方式和渲染效果完全不一致。</p> <p>在这样的种种情况下，我们跑在浏览器中的代码，如果想要在小程序中运行，我们必须要重新开发来实现。那为什么一定要使用小程序呢，直接用 H5 不好吗？其实小程序做了很多的体验优化，同时天然的预加载、原生组件的流畅性，最重要的还是微信平台提供的流量，在很多情况下都不失为一个不错的选择。</p> <h3 id="_15-2-2-开源类-vue-小程序框架"><a href="#_15-2-2-开源类-vue-小程序框架" class="header-anchor">#</a> 15.2.2 开源类 Vue 小程序框架</h3> <p>虽然我们没法一套代码同时运行在浏览器和小程序中，但是依然有不少的开发者或者团队开发了一些框架，来尽可能使用一套代码完成多种环境的开发，例如 mpvue（Vue 系）、wepy（Vue 系）、taro（React 系）等。但毕竟不是官方支持，同时小程序的 API 和兼容性也不断在变动，使用的开源框架要是更新不及时，甚至可能成为技术债务。</p> <h3 id="_15-2-3-kbone-的出现"><a href="#_15-2-3-kbone-的出现" class="header-anchor">#</a> 15.2.3 kbone 的出现</h3> <p>kbone 作为一套解决方案应运而生，用于支持让一个 vue 项目可以同时在 web 端和小程序端被使用。前面说过，在小程序中无法直接使用 DOM/BOM 等 API，因此 kbone 提供了适配层的方式来进行兼容。适配层它提供基础的 DOM/BOM API，让小程序端尽量能使用 web 端的能力:<br> <img src="https://github-imglib-1255459943.cos.ap-chengdu.myqcloud.com/vue-15-1.png" alt="image"><br>
+图 15-6 kbone 适配层</p> <p>简单来说，就是提供了一个将 DOM/BOM 相关 API 转换成在小程序中的实现方式，这里有点像前面<a href="/vue-ebook/vue-ebook/13.html">《第13章 实战：表单配置化实现》</a>中使用的配置方式，适配层维护一套虚拟 DOM 节点，然后根据节点信息，再通过简单的<code>wx:for</code>和<code>wx:if</code>来生成页面相关代码。</p> <p>我们来看下，我们在<a href="/vue-ebook/vue-ebook/8.html">第8章</a>中的 Todo List 代码，直接使用 kbone 来运行，跑在 web 和小程序两端的效果是怎样的。</p> <h4 id="kbone-安装"><a href="#kbone-安装" class="header-anchor">#</a> kbone 安装</h4> <p>使用 kbone，官方提供了三种方式。</p> <p><strong>(1) 新项目使用 kbone-cli。</strong><br>
+对于新项目，可以使用 kbone-cli 来创建项目，首先需要全局安装：</p> <div class="language-cmd extra-class"><pre class="language-text"><code># 全局安装 kbone-cli
+npm install -g kbone-cli
+</code></pre></div><p><strong>(2) 基于模板快速调整开发。</strong><br>
+除了使用 kbone-cli 外，也可以直接将现有模板复制下来，然后在模板基础上进行开发改造。</p> <p><strong>(3) 自行改造 Webpacl 配置开发。</strong><br>
+如果想要更灵活地搭建自己的项目，或者是想对已有的项目进行改造，则需要自己补充对应配置（构建到小程序代码的 webpack 配置、使用 webpack 构建中使用到的特殊插件 mp-webpack-plugin 配置）来实现 kbone 项目的构建。</p> <h4 id="todo-list-接入-kbone"><a href="#todo-list-接入-kbone" class="header-anchor">#</a> Todo List 接入 kbone</h4> <p>其实针对已有的项目，不管是以上哪种方式都是可以的，这里我们就直接使用 kbone-cli 生成一个新项目，然后把原有的 Todo List 内容导入查看。</p> <p><strong>(1) 初始化项目。</strong><br>
+首先执行<code>kbone init kbone-todo-list</code>，生成一个初始化项目，初始化的时候需要选择对应的框架，这里我们选择 Vue：</p> <p><img src="https://github-imglib-1255459943.cos.ap-chengdu.myqcloud.com/vue-15-6.jpg" alt="image"><br>
+图 15-7 kbone 初始化</p> <p>初始化完成后，我们来看看目录说明：</p> <div class="language-cmd extra-class"><pre class="language-text"><code>&lt;!-- 此模板 Web 端使用单入口，通过 vue-router + 动态 import 的方式来运行；小程序端则按照业务分拆成多个页面，同属一个业务的页面则通过 vue-router 来组织。 --&gt;
+
+├─ build
+│  ├─ miniprogram.config.js  // mp-webpack-plugin 配置
+│  ├─ webpack.base.config.js // Web 端构建基础配置
+│  ├─ webpack.dev.config.js  // Web 端构建开发环境配置
+│  ├─ webpack.mp.config.js   // 小程序端构建配置
+│  └─ webpack.prod.config.js // Web 端构建生产环境配置
+├─ dist
+│  ├─ mp                     // 小程序端目标代码目录，使用微信开发者工具打开，用于生产环境
+│  └─ web                    // web 端编译出的文件，用于生产环境
+├─ src
+│  ├─ common                 // 通用组件
+│  ├─ mp                     // 小程序端入口目录
+│  │  ├─ home                // 小程序端 home 页面
+│  │  │  └─ main.mp.js       // 小程序端入口文件
+│  │  └─ other               // 小程序端 other 页面
+│  │     └─ main.mp.js       // 小程序端入口文件
+│  ├─ detail                 // detail 页面
+│  ├─ home                   // home 页面
+│  ├─ list                   // list 页面
+│  ├─ router                 // vue-router 路由定义
+│  ├─ store                  // vuex 相关目录
+│  ├─ App.vue                // Web 端入口主视图
+│  └─ main.js                // Web 端入口文件
+└─ index.html                // Web 端入口模板
+</code></pre></div><p><strong>(2) 迁移 Todo List 代码。</strong><br>
+初始化 kbone 项目之后，我们需要将原有的代码迁移过来，迁移过程中有以下注意事项：</p> <ul><li>https 引入的 css/js 资源在小程序中不再可用，可以下载下来通过相对路径引入</li> <li>scoped 样式在小程序中不可用，需要自行加作用域或是进行冲突解决</li> <li>部分样式在 Web 端和小程序端表现不一致，需要进行调整</li> <li>Web 端的鼠标 hover、dbclick 等状态和事件在小程序中不再可用，需要进行调整</li> <li>之前全局引入了 Velocity 进行延时动画，在小程序中需要移除</li> <li>路由调整，需要同时调整<code>src/router/index.js</code>文件、<code>src/mp/todo/main.mp.js</code>文件、<code>build/miniprogram.config.js</code>文件、<code>build/webpack.mp.config.js</code></li></ul> <p><strong>(3) Web 端启动。</strong><br>
+代码迁移过程比较琐碎，这里就不详细讲啦，大家可以去找源码进行参考。迁移完之后，我们首先将 Web 端跑起来，需要执行<code>npm run web</code>命令之后，我们来看看效果：<br> <img src="https://github-imglib-1255459943.cos.ap-chengdu.myqcloud.com/vue-15-8.png" alt="image"><br>
+图 15-8 Web 端启动效果</p> <p>我们能看到主要包括两个变动：<br>
+(1) 增加添加按钮，因为在小程序端无法监控<code>@keyup.enter</code>事件。<br>
+(2) 删除图标，从之前需要鼠标 hover 可见，调整成直接可见，因为在小程序中没有 hover 状态。</p> <p>点击删除的时候，会进行弹窗，这里使用的是 Vuex 进行状态更新（参考<a href="/vue-ebook/vue-ebook/11.html">《第11章 全局数据管理与 Vuex》</a>）：<br> <img src="https://github-imglib-1255459943.cos.ap-chengdu.myqcloud.com/vue-15-9.jpg" alt="点击删除"><br>
+图 15-9 点击删除弹窗效果</p> <p><strong>(4) 小程序端启动。</strong><br>
+在小程序端启动，要先执行<code>npm run mp</code>命令，接下来还需要先进入 dist/mp 目录执行<code>npm install</code>安装相关的依赖包（主要是 miniprogram-render 和 miniprogram-element），然后用开发者工具打开 dist/mp 目录后再进行 npm 构建（菜单栏-工具-构建 npm）：</p> <p><img src="https://github-imglib-1255459943.cos.ap-chengdu.myqcloud.com/vue-15-10.jpg" alt="工具中效果"><br>
+图 15-10 工具中效果</p> <p>我们能看到除了样式有些不一致之外，其他功能都是可用的。另外，我们从工具中可以看到，最终生成的代码基本上是通过<code>&lt;element&gt;</code>组件来实现的，我们看看生成的代码：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token comment">&lt;!-- dist/mp/pages/todo/index.html --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>element</span>
+  <span class="token attr-name"><span class="token namespace">wx:</span>if</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>{{pageId}}<span class="token punctuation">&quot;</span></span>
+  <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>{{bodyClass}}<span class="token punctuation">&quot;</span></span>
+  <span class="token style-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span><span class="token style language-css"><span class="token punctuation">{</span><span class="token punctuation">{</span>bodyStyle<span class="token punctuation">}</span><span class="token punctuation">}</span></span><span class="token punctuation">&quot;</span></span></span>
+  <span class="token attr-name">data-private-node-id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>e-body<span class="token punctuation">&quot;</span></span>
+  <span class="token attr-name">data-private-page-id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>{{pageId}}<span class="token punctuation">&quot;</span></span>
+<span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>element</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><div class="language-json extra-class"><pre class="language-json"><code><span class="token comment">// dist/mp/pages/todo/index.json</span>
+<span class="token comment">// 这里使用了官方兼容层组件miniprogram-element</span>
+<span class="token punctuation">{</span>
+  <span class="token property">&quot;enablePullDownRefresh&quot;</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;usingComponents&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;element&quot;</span><span class="token operator">:</span> <span class="token string">&quot;miniprogram-element&quot;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>如果要继续看下去，你会发现 dist/mp/pages/todo/index.js 文件中也是很多兼容性的代码，也可以验证了我们前面说过的，适配层维护一套虚拟 DOM 节点信息，再通过简单的<code>wx:for</code>和<code>wx:if</code>配合 miniprogram-element 中的 element 组件来生成页面相关代码。</p> <p>点击删除的时候，Vuex 状态相关也是可以正常执行的：<br> <img src="https://github-imglib-1255459943.cos.ap-chengdu.myqcloud.com/vue-15-11.jpg" alt="手机执行效果"><br>
+图 15-11 手机执行效果</p> <blockquote><p><a href="https://github.com/godbasin/vue-ebook/tree/vue-sourcecode/15/3-kbone-todo-list" target="_blank" rel="noopener noreferrer">点击此处查看源码<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></blockquote> <p>当然，kbone 也会存在一些问题，官方也进行了相关的说明，常见的例如：</p> <ul><li>小程序里的所有页面必须同源</li> <li>受限于小程序环境，目前无法支持异步组件</li> <li>小程序不支持属性选择器，所以无法支持 scoped style</li> <li>iframe 标签无法支持</li> <li>vue 的 transition 组件无法完美支持</li> <li>不可使用 rem</li> <li>等等</li></ul> <p>关于 kbone 相关的暂时就介绍到这里，其实我们的 Todo List 样式是 PC 端适应的，而如果做了移动端的样式兼容，就可以很方便地使用 kbone 同构生成 Web 代码（移动端+PC）和小程序代码了，而小程序官方的微信开放社区也正是这样做的，一套代码维护多端。</p> <h2 id="_15-3-其他-vue-周边"><a href="#_15-3-其他-vue-周边" class="header-anchor">#</a> 15.3 其他 Vue 周边</h2> <p>除了 VuePress 和 kbone 之外，常用的还有 Nuxt.js。</p> <p>Nuxt.js 是一个基于 Vue（Vue.js、Vue Router、Vuex 等）、Webpack 和 Babel 的通用应用框架，它预设了利用 Vue.js 开发服务端渲染的应用所需要的各种配置，开发中可以直接基于初始化的项目上进行快速开发。使用服务器端渲染，最主要其实就是为了解决 SEO 的问题，同时服务器端渲染还能解决的首屏加载速度的问题。Nuxt.js 为&quot;客户端/服务端&quot;这种典型的应用架构模式提供了许多有用的特性，包括强大的路由功能、异步数据加载、中间件支持、布局支持等。当然，除了服务端渲染，Nuxt.js 同时还支持单页应用(SPA)、生成静态站点等模式。</p> <p>其实我们前面也介绍过 Vuex、Vue CLI 等，另外 Vue 还包括了 Vue Loader、vue-devtools 等工具，由于篇幅关系这里不介绍使用，大家可以去官网上学习下怎样使用。Vue 作为如今国内的主流框架之一，提供了很完备的生态和社区，越来越多的开发者也加入进来一起建设，周边拓展可见也会越来越丰富。</p></div> <!----> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/godbasin/vue-ebook/edit/ebook-sourcecode/docs/vue-ebook/15.md" target="_blank" rel="noopener noreferrer">帮阿猪改善此页面！</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <!----> <div style="margin-top:30px;"><div class="el-row" style="margin-left:-10px;margin-right:-10px;"><div class="el-col el-col-24 el-col-sm-0 el-col-md-2 el-col-lg-4" style="padding-left:10px;padding-right:10px;display:block;"><div style="width:1px;height:1px;"></div></div> <div class="el-col el-col-24 el-col-sm-24 el-col-md-18 el-col-lg-16" style="padding-left:10px;padding-right:10px;"><div class="el-card box-card is-always-shadow"><div class="el-card__header"><div class="clearfix"><span>温馨提示喵</span></div></div><div class="el-card__body"> <div class="el-row" style="margin-left:-10px;margin-right:-10px;"><div class="el-col el-col-24 el-col-xs-24 el-col-sm-12" style="padding-left:10px;padding-right:10px;"><div class="el-image"><div class="image-slot"><img src="https://github-imglib-1255459943.cos.ap-chengdu.myqcloud.com/assets/img/loading.gif" style="width:100%;"></div><!----></div></div> <div class="el-col el-col-24 el-col-xs-24 el-col-sm-12" style="padding-left:10px;padding-right:10px;"><div class="copyright-text"><div>本书采用“保持署名—非商用”<a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">创意共享4.0许可证</a>。只要保持原作者署名和非商用，您可以自由地阅读、分享、修改本书。</div> <div>作者：<a href="https://github.com/godbasin" target="_blank">被删</a></div></div></div></div></div></div></div></div></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/vue-ebook/vue-ebook/14.html" class="prev">
+          第14章 实战：使用 Webpack 或 Vue CLI 搭建多页应用
+        </a></span> <span class="next"><a href="/vue-ebook/vue-ebook/16.html">
+          第16章 关于 Vue 3.0
+        </a>
+        →
+      </span></p></div>  <div class="gitalk-container theme-default-content"><div id="gitalk-container" class="content"></div></div></main> <div id="kitty-container"><span><div role="tooltip" id="el-popover-3395" aria-hidden="true" class="el-popover el-popper" style="width:undefinedpx;display:none;"><!----><img src="https://github-imglib-1255459943.cos.ap-chengdu.myqcloud.com/2code2.jpg" class="image"> <div class="text">牡羊猪的猫粮罐</div> </div><span class="el-popover__reference-wrapper"><div id="kitty" style="background:url(https://github-imglib-1255459943.cos.ap-chengdu.myqcloud.com/assets/img/kitty0.svg);"></div></span></span> <div class="el-dialog__wrapper" style="display:none;"><div role="dialog" aria-modal="true" aria-label="牡羊猪是这样渐渐胖成猪的喵（点击图片可以切换噢）" class="el-dialog" style="margin-top:15vh;"><div class="el-dialog__header"><span class="el-dialog__title">牡羊猪是这样渐渐胖成猪的喵（点击图片可以切换噢）</span><button type="button" aria-label="Close" class="el-dialog__headerbtn"><i class="el-dialog__close el-icon el-icon-close"></i></button></div><!----><!----></div></div></div></div><div class="global-ui"></div></div>
+    <script src="/vue-ebook/assets/js/app.2f410bb9.js" defer></script><script src="/vue-ebook/assets/js/2.d60fd2a5.js" defer></script><script src="/vue-ebook/assets/js/3.c15c8d98.js" defer></script><script src="/vue-ebook/assets/js/14.6e36d276.js" defer></script>
+  </body>
+</html>

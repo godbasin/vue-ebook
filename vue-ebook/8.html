@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>第8章 实战：Todo List 从组件到应用 | 深入理解Vue.js实战</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="作者：被删">
+    
+    <link rel="preload" href="/vue-ebook/assets/css/0.styles.77f3552e.css" as="style"><link rel="preload" href="/vue-ebook/assets/js/app.2f410bb9.js" as="script"><link rel="preload" href="/vue-ebook/assets/js/2.d60fd2a5.js" as="script"><link rel="preload" href="/vue-ebook/assets/js/3.c15c8d98.js" as="script"><link rel="preload" href="/vue-ebook/assets/js/22.5b27d5dc.js" as="script">
+    <link rel="stylesheet" href="/vue-ebook/assets/css/0.styles.77f3552e.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/vue-ebook/" class="home-link router-link-active"><!----> <span class="site-name">深入理解Vue.js实战</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/vue-ebook/" class="nav-link">概述</a></div><div class="nav-item"><a href="/vue-ebook/vue-ebook/" class="nav-link router-link-active">内容</a></div> <a href="https://github.com/godbasin/vue-ebook" target="_blank" rel="noopener noreferrer" class="repo-link">
+    Github
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/vue-ebook/" class="nav-link">概述</a></div><div class="nav-item"><a href="/vue-ebook/vue-ebook/" class="nav-link router-link-active">内容</a></div> <a href="https://github.com/godbasin/vue-ebook" target="_blank" rel="noopener noreferrer" class="repo-link">
+    Github
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0" style="padding-top:;"><!----> <p class="sidebar-heading"><span>前言</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/vue-ebook/vue-ebook/0.html" class="sidebar-link">前端框架的出现</a></li></ul></section></li><li><section class="sidebar-group depth-0" style="padding-top:10px;"><div class="kitty-main" data-v-2b653b36><span class="stand" data-v-2b653b36></span> <div class="cat" data-v-2b653b36><div class="body" data-v-2b653b36></div> <div class="head" data-v-2b653b36><div class="ear" data-v-2b653b36></div> <div class="ear" data-v-2b653b36></div></div> <div class="face" data-v-2b653b36><div class="nose" data-v-2b653b36></div> <div class="whisker-container" data-v-2b653b36><div class="whisker" data-v-2b653b36></div> <div class="whisker" data-v-2b653b36></div></div> <div class="whisker-container" data-v-2b653b36><div class="whisker" data-v-2b653b36></div> <div class="whisker" data-v-2b653b36></div></div></div> <div class="tail-container" data-v-2b653b36><div class="tail" data-v-2b653b36><div class="tail" data-v-2b653b36><div class="tail" data-v-2b653b36><div class="tail" data-v-2b653b36><div class="tail" data-v-2b653b36><div class="tail" data-v-2b653b36><div class="tail" data-v-2b653b36></div></div></div></div></div></div></div></div></div></div> <p class="sidebar-heading open"><span>第一部分 Vue快速入门</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/vue-ebook/vue-ebook/1.html" class="sidebar-link">第1章 Vue 框架介绍</a></li><li><a href="/vue-ebook/vue-ebook/2.html" class="sidebar-link">第2章 Vue 环境快速搭建</a></li><li><a href="/vue-ebook/vue-ebook/3.html" class="sidebar-link">第3章 Vue 基础介绍</a></li><li><a href="/vue-ebook/vue-ebook/4.html" class="sidebar-link">第4章 Vue 组件的使用</a></li><li><a href="/vue-ebook/vue-ebook/5.html" class="sidebar-link">第5章 常用指令和自定义指令</a></li><li><a href="/vue-ebook/vue-ebook/6.html" class="sidebar-link">第6章 Vue 动画</a></li><li><a href="/vue-ebook/vue-ebook/7.html" class="sidebar-link">第7章 Vue Router 路由搭建应用</a></li><li><a href="/vue-ebook/vue-ebook/8.html" aria-current="page" class="active sidebar-link">第8章 实战：Todo List 从组件到应用</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vue-ebook/vue-ebook/8.html#_8-1-单组件-todo-list" class="sidebar-link">8.1 单组件 Todo List</a></li><li class="sidebar-sub-header"><a href="/vue-ebook/vue-ebook/8.html#_8-2-单页应用-todo-list" class="sidebar-link">8.2 单页应用 Todo List</a></li></ul></li></ul></section></li><li><section class="sidebar-group depth-0" style="padding-top:;"><!----> <p class="sidebar-heading"><span>第二部分 Vue的正确使用方式</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/vue-ebook/vue-ebook/9.html" class="sidebar-link">第9章 思维转变与大型项目管理</a></li><li><a href="/vue-ebook/vue-ebook/10.html" class="sidebar-link">第10章 如何正确地进行抽象</a></li><li><a href="/vue-ebook/vue-ebook/11.html" class="sidebar-link">第11章 全局数据管理与 Vuex</a></li><li><a href="/vue-ebook/vue-ebook/12.html" class="sidebar-link">第12章 实战：三天开发一个管理端</a></li><li><a href="/vue-ebook/vue-ebook/13.html" class="sidebar-link">第13章 实战：表单配置化实现</a></li><li><a href="/vue-ebook/vue-ebook/14.html" class="sidebar-link">第14章 实战：使用 Webpack 或 Vue CLI 搭建多页应用</a></li><li><a href="/vue-ebook/vue-ebook/15.html" class="sidebar-link">第15章 Vue 周边拓展</a></li><li><a href="/vue-ebook/vue-ebook/16.html" class="sidebar-link">第16章 关于 Vue 3.0</a></li></ul></section></li><li><section class="sidebar-group depth-0" style="padding-top:;"><!----> <p class="sidebar-heading"><span>后记</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/vue-ebook/vue-ebook/99.html" class="sidebar-link">关于框架选型</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="第8章-实战-todo-list-从组件到应用"><a href="#第8章-实战-todo-list-从组件到应用" class="header-anchor">#</a> 第8章 实战：Todo List 从组件到应用</h1> <blockquote><p>本章节相关代码存放在<a href="https://github.com/godbasin/vue-ebook/tree/vue-sourcecode/8" target="_blank" rel="noopener noreferrer">Github<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>中。</p></blockquote> <p>前面我们介绍了 Vue 实例、组件、指令、Vue Router 等，大家也知道了 Vue 提供的很多便捷能力，那我们在实际项目中要怎么把这些功能使用起来呢？</p> <p>这种时候，当然是要拿 Todo List 来讲解了。至于 Todo List 的样式我们这里就不自己设计了，直接使用 Github 上开源的 TodoMVC（地址：https://github.com/tastejs/todomvc）来完成。这个开源项目里包括了各个框架的代码示例，当然也有Vue.js的示例，但如果直接拿来使用，就达不到我们自己开发的目的了。所以这里我们只使用他们的样式，而功能自己一步步设计和开发。</p> <h2 id="_8-1-单组件-todo-list"><a href="#_8-1-单组件-todo-list" class="header-anchor">#</a> 8.1 单组件 Todo List</h2> <p>如果是一个简单的 Todo List 的 UI 功能，一般来说我们只需要一个 Vue 组件就可以完成。</p> <h3 id="_8-1-1-todo-list-实现"><a href="#_8-1-1-todo-list-实现" class="header-anchor">#</a> 8.1.1 Todo List 实现</h3> <p>我们先来设计最基础的功能，Todo List 一般用来记录备忘的，最简单的功能包括（如图 8-1）：<br>
+(1) 新增一条备忘。<br>
+(2) 修改该条备忘。<br>
+(3) 选择/全选删除某条备忘。<br>
+(4) 将某条备忘设置成已完成。<br>
+(5) 快速删除已完成的备忘。</p> <p><img src="https://github-imglib-1255459943.cos.ap-chengdu.myqcloud.com/vue-8-1.png" alt="image"><br>
+图 8-1 Todo List 基本功能</p> <h4 id="_1-设计数据结构"><a href="#_1-设计数据结构" class="header-anchor">#</a> 1. 设计数据结构</h4> <p>这个界面中，我们需要有以下的数据：备忘列表、新增备忘内容和修改中的备忘信息，我们在<code>data</code>中添加每个数据对应的变量：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token comment">// ...其他配置</span>
+  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      todos<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// 所有的备忘列表</span>
+      newTodo<span class="token operator">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span> <span class="token comment">// 新增的备忘</span>
+      editedTodo<span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token comment">// 修改中的备忘</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><p>备忘列表<code>todos</code>用数组实现，新增备忘内容<code>newTodo</code>直接用字符串来表示，而修改中的备忘<code>editedTodo</code>由于需要维护修改中的备忘信息，可以用对象来表示。</p> <h4 id="_2-页面逻辑与交互实现"><a href="#_2-页面逻辑与交互实现" class="header-anchor">#</a> 2. 页面逻辑与交互实现</h4> <p>设计了页面的数据结构之后，我们就可以一个一个地进行功能设计和实现，根据前面罗列的 Todo List 基本功能，我们可以分成三个步骤来实现：<br>
+(1) 实现新增备忘。<br>
+(2) 实现备忘列表管理，包括编辑、删除等功能。<br>
+(3) 实现计算与快速移除已完成备忘数。</p> <p><strong>(1) 新增的备忘。</strong></p> <p>首先我们来实现备忘新增的能力，需要用到<code>newTodo</code>和<code>todos</code>两个变量。<code>newTodo</code>用来存储我们正在默认输入框中输入的内容，同时当用户按下 Enter 键的时候（可以使用<code>@keyup.enter</code>绑定事件），我们就自动将新的备忘添加到备忘列表<code>todos</code>中：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token comment">&lt;!-- 输入备忘，使用 v-model 绑定 newTodo --&gt;</span>
+<span class="token comment">&lt;!-- 监听 keyup 事件，同时使用修饰器 .enter，按 Enter 键时事件才触发 --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span>
+  <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>new-todo<span class="token punctuation">&quot;</span></span>
+  <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>你接下来要做什么?<span class="token punctuation">&quot;</span></span>
+  <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>newTodo<span class="token punctuation">&quot;</span></span>
+  <span class="token attr-name">@keyup.enter</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>addTodo<span class="token punctuation">&quot;</span></span>
+<span class="token punctuation">/&gt;</span></span>
+</code></pre></div><div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">let</span> id <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 其他选项省略</span>
+  methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 新增备忘</span>
+    <span class="token function">addTodo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 内容为空则不处理</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">this</span><span class="token punctuation">.</span>newTodo<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token comment">// 往备忘列表中新增一条</span>
+      <span class="token comment">// 最后新增的备忘插在最前面，所以使用 unshift 而不是 push</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>todos<span class="token punctuation">.</span><span class="token function">unshift</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        id<span class="token operator">:</span> id<span class="token operator">++</span><span class="token punctuation">,</span> <span class="token comment">// id 自增</span>
+        title<span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>newTodo<span class="token punctuation">,</span>
+        completed<span class="token operator">:</span> <span class="token boolean">false</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment">// 添加成功后，清空输入框，方便重新输入</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>newTodo <span class="token operator">=</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><p><strong>(2) 备忘列表管理。</strong></p> <p>已添加的备忘会展示在列表里，我们可以对它们进行选择、删除、（双击）修改等操作。我们可以在模板中绑定事件：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token comment">&lt;!-- 查看所有备忘 --&gt;</span>
+<span class="token comment">&lt;!-- v-for 遍历所有备忘，key 绑定备忘 id，class 绑定样式 --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span>
+  <span class="token attr-name">v-for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>todo in todos<span class="token punctuation">&quot;</span></span>
+  <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>todo<span class="token punctuation">&quot;</span></span>
+  <span class="token attr-name">:key</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>todo.id<span class="token punctuation">&quot;</span></span>
+  <span class="token attr-name">:class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>{ completed: todo.completed, editing: todo.id == editedTodo.id }<span class="token punctuation">&quot;</span></span>
+<span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>view<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!-- 选择某条备忘 --&gt;</span>
+    <span class="token comment">&lt;!-- v-model 绑定是否选中 --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>toggle<span class="token punctuation">&quot;</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>checkbox<span class="token punctuation">&quot;</span></span> <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>todo.completed<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+    <span class="token comment">&lt;!-- 双击可操作备忘 --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">@dblclick</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>editTodo(todo)<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>{{ todo.title }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!-- 删除某条备忘 --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>destroy<span class="token punctuation">&quot;</span></span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>removeTodo(todo)<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token comment">&lt;!-- 修改备忘的数据，失焦或 Enter 键可更新数据，Esc键取消更新 --&gt;</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span>
+    <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>edit<span class="token punctuation">&quot;</span></span>
+    <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>text<span class="token punctuation">&quot;</span></span>
+    <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>editedTodo.title<span class="token punctuation">&quot;</span></span>
+    <span class="token attr-name">@blur</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>doneEdit(editedTodo)<span class="token punctuation">&quot;</span></span>
+    <span class="token attr-name">@keyup.enter</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>doneEdit(editedTodo)<span class="token punctuation">&quot;</span></span>
+    <span class="token attr-name">@keyup.esc</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>cancelEdit()<span class="token punctuation">&quot;</span></span>
+  <span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>然后我们来一一实现编辑、删除等方法：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 其他选项省略</span>
+  methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 编辑备忘</span>
+    <span class="token function">editTodo</span><span class="token punctuation">(</span><span class="token parameter">todo</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 将待编辑的内容填充到修改的内容中</span>
+      <span class="token comment">// 使用 ... 解构，相当于使用 Object.assign，属于浅拷贝</span>
+      <span class="token comment">// 此处对象只有一层，浅拷贝足矣</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>editedTodo <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token operator">...</span>todo <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token comment">// 确认修改备忘</span>
+    <span class="token function">doneEdit</span><span class="token punctuation">(</span><span class="token parameter">todo</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 将编辑中内容更新到列表中</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>todos <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>todos<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">x</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> todo<span class="token punctuation">.</span>id <span class="token operator">==</span> x<span class="token punctuation">.</span>id <span class="token operator">?</span> <span class="token punctuation">{</span> <span class="token operator">...</span>todo <span class="token punctuation">}</span> <span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token operator">...</span>x <span class="token punctuation">}</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment">// 清空编辑对象</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>editedTodo <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token comment">// 取消修改备忘</span>
+    <span class="token function">cancelEdit</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>editedTodo <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token comment">// 删除备忘</span>
+    <span class="token function">removeTodo</span><span class="token punctuation">(</span><span class="token parameter">todo</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 匹配 id 找出该备忘，然后移除</span>
+      <span class="token keyword">const</span> index <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>todos<span class="token punctuation">.</span><span class="token function">findIndex</span><span class="token punctuation">(</span><span class="token parameter">x</span> <span class="token operator">=&gt;</span> x<span class="token punctuation">.</span>id <span class="token operator">===</span> todo<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>todos<span class="token punctuation">.</span><span class="token function">splice</span><span class="token punctuation">(</span>index<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><p><strong>(3) 计算与快速移除已完成备忘数。</strong></p> <p>前面第三章介绍了 Vue 的基本概念，计算属性 computed 与过滤器 filter 的使用，可以用来计算当前剩下的未完成备忘数，以及根据数量来控制单位是否复数（用于单位计算）：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>footer</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>footer<span class="token punctuation">&quot;</span></span> <span class="token attr-name">v-show</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>todos.length<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>todo-count<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!-- remaining 计算剩余的未完成的数量，pluralize 用来过滤单位是否要负数 --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>strong</span><span class="token punctuation">&gt;</span></span>{{ remaining }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>strong</span><span class="token punctuation">&gt;</span></span> {{ remaining | pluralize }} left
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>
+  <span class="token comment">&lt;!-- 当有已完成的备忘时，一键移除已完成按钮出现 --&gt;</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span>
+    <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>clear-completed<span class="token punctuation">&quot;</span></span>
+    <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>removeCompleted<span class="token punctuation">&quot;</span></span>
+    <span class="token attr-name">v-show</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>todos.length &gt; remaining<span class="token punctuation">&quot;</span></span>
+  <span class="token punctuation">&gt;</span></span>
+    Clear completed
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>footer</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>同时我们还要实现一键删除已完成备忘的功能：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 其他选项省略</span>
+  computed<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 计算剩余未完成的备忘</span>
+    <span class="token function">remaining</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 过滤掉已完成的，获取数量</span>
+      <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>todos<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token parameter">x</span> <span class="token operator">=&gt;</span> <span class="token operator">!</span>x<span class="token punctuation">.</span>completed<span class="token punctuation">)</span><span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  filters<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 计算单位</span>
+    <span class="token function">pluralize</span><span class="token punctuation">(</span><span class="token parameter">num</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 如果是多个，则加复数</span>
+      <span class="token keyword">return</span> num <span class="token operator">&gt;</span> <span class="token number">1</span> <span class="token operator">?</span> <span class="token string">&quot;items&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;item&quot;</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 删除已完成的备忘</span>
+    <span class="token function">removeCompleted</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>todos <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>todos<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token parameter">x</span> <span class="token operator">=&gt;</span> <span class="token operator">!</span>x<span class="token punctuation">.</span>completed<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><p>到这里，Vue 中常用的语法和选项我们都基本上用上了，包括指令<code>v-for</code>、<code>v-if/v-show</code>、<code>v-model</code>，同时还有 class 的绑定、Vue 实例的 computed、filters 等，这些在我们开发中是最基本的一些能力，要熟练掌握它们的使用范围和方式。</p> <blockquote><p><a href="https://vue-eboook-1255459943.cos.ap-chengdu.myqcloud.com/8/1-todolist-basic/index.html" target="_blank" rel="noopener noreferrer">点击此处查看页面效果<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> <a href="https://github.com/godbasin/vue-ebook/tree/vue-sourcecode/8/1-todolist-basic" target="_blank" rel="noopener noreferrer">点击此处查看源码<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></blockquote> <p>上面介绍的是一些 Todo List 基本功能的实现，下面我们要讲解一些自定义指令、自定义组件和动画相关的内容。</p> <h3 id="_8-1-2-v-autofocus-指令"><a href="#_8-1-2-v-autofocus-指令" class="header-anchor">#</a> 8.1.2 v-autofocus 指令</h3> <p>前面讲解自定义指令的时候，我们介绍了官方的一个自动聚焦的能力，在这里我们也可以用上：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 其他选项省略</span>
+  directives<span class="token operator">:</span> <span class="token punctuation">{</span>
+    autofocus<span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 被绑定元素插入父节点时调用 (仅保证父节点存在，但不一定已被插入文档中)</span>
+      <span class="token function-variable function">inserted</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">el</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// el: 指令所绑定的元素，可以用来直接操作 DOM</span>
+        el<span class="token punctuation">.</span><span class="token function">focus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><p>因为是在<code>inserted</code>钩子中使用，所以我们需要触发元素插入的逻辑，可以通过添加<code>v-if</code>来触发：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token comment">&lt;!-- 修改备忘的数据，失焦或 Enter 键可更新数据，Esc键取消更新 --&gt;</span>
+<span class="token comment">&lt;!-- v-autofocus 添加自动聚焦功能，结合 v-if 使用来获得编辑时候自动聚焦的效果 --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span>
+  <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>edit<span class="token punctuation">&quot;</span></span>
+  <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>text<span class="token punctuation">&quot;</span></span>
+  <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>editedTodo.title<span class="token punctuation">&quot;</span></span>
+  <span class="token attr-name">v-autofocus</span>
+  <span class="token attr-name">v-if</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>todo.id == editedTodo.id<span class="token punctuation">&quot;</span></span>
+  <span class="token attr-name">@blur</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>doneEdit(editedTodo)<span class="token punctuation">&quot;</span></span>
+  <span class="token attr-name">@keyup.enter</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>doneEdit(editedTodo)<span class="token punctuation">&quot;</span></span>
+  <span class="token attr-name">@keyup.esc</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>cancelEdit()<span class="token punctuation">&quot;</span></span>
+<span class="token punctuation">/&gt;</span></span>
+</code></pre></div><p>同时，我们也需要在页面打开的时候，自动聚焦到新增备忘的输入框中：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token comment">&lt;!-- 监听 keyup 事件，同时使用修饰器 .enter，按 Enter 键时事件才触发 --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span>
+  <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>new-todo<span class="token punctuation">&quot;</span></span>
+  <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>你接下来要做什么?<span class="token punctuation">&quot;</span></span>
+  <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>newTodo<span class="token punctuation">&quot;</span></span>
+  <span class="token attr-name">v-autofocus</span>
+  <span class="token attr-name">@keyup.enter</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>addTodo<span class="token punctuation">&quot;</span></span>
+<span class="token punctuation">/&gt;</span></span>
+</code></pre></div><h3 id="_8-1-3-自定义组件使用"><a href="#_8-1-3-自定义组件使用" class="header-anchor">#</a> 8.1.3 自定义组件使用</h3> <p>这里我们的备忘列表中，每个备忘都包括了内容、选择、编辑、删除等功能，根据组件划分的原则（详见<a href="/vue-ebook/vue-ebook/5.html">第5章</a>），我们可以将它单独抽象成一个组件：<br>
+(1) 维护自身的编辑中状态。<br>
+(2) 更新备忘内容、勾选已完成，都自行更新备忘状态。<br>
+(3) 删除当前备忘，需要通知父组件进行删除。</p> <p><img src="https://github-imglib-1255459943.cos.ap-chengdu.myqcloud.com/vue-8-2.jpg" alt="image"><br>
+图 8-2 每个备忘单独抽象成组件</p> <p>在这里，由于需要自行更新备忘内容和勾选状态，也就是<code>title</code>和<code>completed</code>，我们需要对<code>todo</code>进行“双向绑定”。但是真正的双向绑定会带来维护上的问题，因为子组件可以修改父组件，且在父组件和子组件都没有明显的改动来源。这种情况下，我们可以使用<code>update:myPropName</code>的模式触发事件取而代之。</p> <p>我们来看看这个组件的实现：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">:class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>{editing: isEdited }<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>view<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+      <span class="token comment">&lt;!-- 选择某条备忘 --&gt;</span>
+      <span class="token comment">&lt;!-- v-model 绑定是否选中 --&gt;</span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span>
+        <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>toggle<span class="token punctuation">&quot;</span></span>
+        <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>checkbox<span class="token punctuation">&quot;</span></span>
+        <span class="token attr-name">@change</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>updateChecked($event.target.checked)<span class="token punctuation">&quot;</span></span>
+      <span class="token punctuation">/&gt;</span></span>
+      <span class="token comment">&lt;!-- 双击可操作备忘 --&gt;</span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">@dblclick</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>editTodo(todo)<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>{{ title }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
+      <span class="token comment">&lt;!-- 删除某条备忘 --&gt;</span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>destroy<span class="token punctuation">&quot;</span></span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>removeTodo(todo)<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!-- 修改备忘的数据，失焦或 Enter 键可更新数据，Esc键取消更新 --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span>
+      <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>edit<span class="token punctuation">&quot;</span></span>
+      <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>text<span class="token punctuation">&quot;</span></span>
+      <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>editingTitle<span class="token punctuation">&quot;</span></span>
+      <span class="token attr-name">v-autofocus</span>
+      <span class="token attr-name">v-if</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>isEdited<span class="token punctuation">&quot;</span></span>
+      <span class="token attr-name">@blur</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>doneEdit()<span class="token punctuation">&quot;</span></span>
+      <span class="token attr-name">@keyup.enter</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>doneEdit()<span class="token punctuation">&quot;</span></span>
+      <span class="token attr-name">@keyup.esc</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>cancelEdit()<span class="token punctuation">&quot;</span></span>
+    <span class="token punctuation">/&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+    <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token punctuation">{</span>
+        isEdited<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token comment">// 是否在编辑中中状态</span>
+        editingTitle<span class="token operator">:</span> <span class="token string">&quot;&quot;</span> <span class="token comment">// 编辑中内容</span>
+      <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    props<span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 备忘内容</span>
+      title<span class="token operator">:</span> <span class="token punctuation">{</span>
+        type<span class="token operator">:</span> String<span class="token punctuation">,</span>
+        <span class="token keyword">default</span><span class="token operator">:</span> <span class="token string">&quot;&quot;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token comment">// 备忘勾选（已完成）状态</span>
+      completed<span class="token operator">:</span> <span class="token punctuation">{</span>
+        type<span class="token operator">:</span> Boolean<span class="token punctuation">,</span>
+        <span class="token keyword">default</span><span class="token operator">:</span> <span class="token boolean">false</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 编辑备忘</span>
+      <span class="token function">editTodo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>editingTitle <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>title<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>isEdited <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token comment">// 确认修改备忘</span>
+      <span class="token function">doneEdit</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// ESC 按键也会触发 blur 事件，故需要判断原有状态是否是编辑中</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>isEdited<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token comment">// 更新绑定的 title</span>
+          <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">$emit</span><span class="token punctuation">(</span><span class="token string">&quot;update:title&quot;</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>editingTitle<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token keyword">this</span><span class="token punctuation">.</span>isEdited <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token comment">// 取消修改备忘</span>
+      <span class="token function">cancelEdit</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 取消编辑中状态</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>isEdited <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token comment">// 更新选中状态</span>
+      <span class="token function">updateChecked</span><span class="token punctuation">(</span><span class="token parameter">completed</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 更新绑定的 completed</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">$emit</span><span class="token punctuation">(</span><span class="token string">&quot;update:completed&quot;</span><span class="token punctuation">,</span> completed<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token comment">// 删除备忘</span>
+      <span class="token function">removeTodo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 通知父组件删除</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">$emit</span><span class="token punctuation">(</span><span class="token string">&quot;delete&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">&gt;</span></span><span class="token style"><span class="token language-css">
+  <span class="token comment">/* 由于改动了原有样式结构，所以需要改变对应的 CSS 选择器的结构 */</span>
+  <span class="token selector">.todo-list li .editing .view</span> <span class="token punctuation">{</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">.todo-list li .editing .edit</span> <span class="token punctuation">{</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> block<span class="token punctuation">;</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 506px<span class="token punctuation">;</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 12px 16px<span class="token punctuation">;</span>
+    <span class="token property">margin</span><span class="token punctuation">:</span> 0 0 0 43px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>这里我们用<code>this.$emit('update:title', newTitle)</code>方法表达对其赋新值的意图，父组件可以这样监听事件并根据更新一个对应的数据：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>todo-item</span>
+  <span class="token attr-name"><span class="token namespace">v-bind:</span>title</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>todo.title<span class="token punctuation">&quot;</span></span>
+  <span class="token attr-name"><span class="token namespace">v-on:</span><span class="token namespace">update:</span>title</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>todo.title = $event<span class="token punctuation">&quot;</span></span>
+<span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>todo-item</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>在 Vue 中为了方便起见，我们为这种模式提供一个缩写，即 .sync 修饰符：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>todo-item</span> <span class="token attr-name"><span class="token namespace">v-bind:</span>title.sync</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>todo.title<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>todo-item</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>所以，在父组件中我们就可以这样使用这个组件：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token comment">&lt;!-- 查看所有备忘 --&gt;</span>
+<span class="token comment">&lt;!-- v-for 遍历所有备忘，key 绑定备忘 id，class 绑定样式 --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span>
+  <span class="token attr-name">v-for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>todo in todos<span class="token punctuation">&quot;</span></span>
+  <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>todo<span class="token punctuation">&quot;</span></span>
+  <span class="token attr-name">:key</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>todo.id<span class="token punctuation">&quot;</span></span>
+  <span class="token attr-name">:class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>{ completed: todo.completed }<span class="token punctuation">&quot;</span></span>
+<span class="token punctuation">&gt;</span></span>
+  <span class="token comment">&lt;!-- 使用 todo-item 组件 --&gt;</span>
+  <span class="token comment">&lt;!-- “双向绑定”备忘内容 title 和备忘已完成状态 completed --&gt;</span>
+  <span class="token comment">&lt;!-- 监听 delete 事件 --&gt;</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>todo-item</span>
+    <span class="token attr-name"><span class="token namespace">v-bind:</span>title.sync</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>todo.title<span class="token punctuation">&quot;</span></span>
+    <span class="token attr-name"><span class="token namespace">v-bind:</span>completed.sync</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>todo.completed<span class="token punctuation">&quot;</span></span>
+    <span class="token attr-name">@delete</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>removeTodo(todo)<span class="token punctuation">&quot;</span></span>
+  <span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>todo-item</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>这样，在父组件中只需要维护一个备忘的新增和删除，其他备忘自己的内容和状态更新都不用管啦：</p> <div class="language-js extra-class"><pre class="language-js"><code>  <span class="token comment">// 引入组件方便使用</span>
+<span class="token keyword">import</span> TodoItem <span class="token keyword">from</span> <span class="token string">&quot;./TodoItem&quot;</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token comment">// 使用自定义组件</span>
+  components<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;todo-item&quot;</span><span class="token operator">:</span> TodoItem
+  <span class="token punctuation">}</span>
+  methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 删除备忘</span>
+    <span class="token function">removeTodo</span><span class="token punctuation">(</span><span class="token parameter">todo</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token comment">// 匹配 id 找出该备忘，然后移除</span>
+      <span class="token keyword">const</span> index <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>todos<span class="token punctuation">.</span><span class="token function">findIndex</span><span class="token punctuation">(</span><span class="token parameter">x</span> <span class="token operator">=&gt;</span> x<span class="token punctuation">.</span>id <span class="token operator">===</span> todo<span class="token punctuation">.</span>id<span class="token punctuation">)</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>todos<span class="token punctuation">.</span><span class="token function">splice</span><span class="token punctuation">(</span>index<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><h3 id="_8-1-4-过渡动画"><a href="#_8-1-4-过渡动画" class="header-anchor">#</a> 8.1.4 过渡动画</h3> <p>当我们备忘过多的时候，为了避免输入重复的内容，我们可以在输入的过程中，自动匹配已存在的内容：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 其他选项省略</span>
+  computed<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 计算匹配的备忘</span>
+    <span class="token function">computedTodos</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 过滤展示匹配的内容</span>
+      <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>todos<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token parameter">item</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>
+          item<span class="token punctuation">.</span>title<span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>newTodo<span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!==</span> <span class="token operator">-</span><span class="token number">1</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><p>这个时候，我们可以加个过渡动画，来平滑地展示匹配的内容（关于更多的 Vue 相关动画效果，请参考<a href="/vue-ebook/vue-ebook/6.html">第6章</a>内容）。我们可以直接使用官方提供的 Javascript 钩子方式就可以：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token comment">&lt;!-- 添加 before-enter、enter 和 leave 的钩子 --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>transition-group</span>
+  <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>staggered-fade<span class="token punctuation">&quot;</span></span>
+  <span class="token attr-name">tag</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>ul<span class="token punctuation">&quot;</span></span>
+  <span class="token attr-name"><span class="token namespace">v-bind:</span>css</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>false<span class="token punctuation">&quot;</span></span>
+  <span class="token attr-name"><span class="token namespace">v-on:</span>before-enter</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>beforeEnter<span class="token punctuation">&quot;</span></span>
+  <span class="token attr-name"><span class="token namespace">v-on:</span>enter</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>enter<span class="token punctuation">&quot;</span></span>
+  <span class="token attr-name"><span class="token namespace">v-on:</span>leave</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>leave<span class="token punctuation">&quot;</span></span>
+  <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>todo-list<span class="token punctuation">&quot;</span></span>
+<span class="token punctuation">&gt;</span></span>
+  <span class="token comment">&lt;!-- v-for 遍历匹配中的备忘 computedTodos，key 绑定备忘 id，class 绑定样式 --&gt;</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span>
+    <span class="token attr-name">v-for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>todo in computedTodos<span class="token punctuation">&quot;</span></span>
+    <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>todo<span class="token punctuation">&quot;</span></span>
+    <span class="token attr-name">:key</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>todo.id<span class="token punctuation">&quot;</span></span>
+    <span class="token attr-name">:class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>{ completed: todo.completed }<span class="token punctuation">&quot;</span></span>
+  <span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!-- 此处省略 --&gt;</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>transition-group</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 其他选项省略</span>
+  methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 进入中</span>
+    <span class="token function">beforeEnter</span><span class="token punctuation">(</span><span class="token parameter">el</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      el<span class="token punctuation">.</span>style<span class="token punctuation">.</span>opacity <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+      el<span class="token punctuation">.</span>style<span class="token punctuation">.</span>height <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function">enter</span><span class="token punctuation">(</span><span class="token parameter">el<span class="token punctuation">,</span> done</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 设置延时</span>
+      <span class="token keyword">var</span> delay <span class="token operator">=</span> el<span class="token punctuation">.</span>dataset<span class="token punctuation">.</span>index <span class="token operator">*</span> <span class="token number">150</span><span class="token punctuation">;</span>
+      <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 更新元素样式</span>
+        <span class="token function">Velocity</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> <span class="token punctuation">{</span> opacity<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> height<span class="token operator">:</span> <span class="token string">&quot;58px&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> complete<span class="token operator">:</span> done <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span> delay<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token comment">// 离开时</span>
+    <span class="token function">leave</span><span class="token punctuation">(</span><span class="token parameter">el<span class="token punctuation">,</span> done</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 设置延时</span>
+      <span class="token keyword">var</span> delay <span class="token operator">=</span> el<span class="token punctuation">.</span>dataset<span class="token punctuation">.</span>index <span class="token operator">*</span> <span class="token number">150</span><span class="token punctuation">;</span>
+      <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 更新元素样式</span>
+        <span class="token function">Velocity</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> <span class="token punctuation">{</span> opacity<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span> height<span class="token operator">:</span> <span class="token number">0</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> complete<span class="token operator">:</span> done <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span> delay<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><p>这样，我们就能有个备忘筛选匹配的过渡效果了。</p> <blockquote><p><a href="https://vue-eboook-1255459943.cos.ap-chengdu.myqcloud.com/8/2-todolist-update/index.html" target="_blank" rel="noopener noreferrer">点击此处查看页面效果<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> <a href="https://github.com/godbasin/vue-ebook/tree/vue-sourcecode/8/2-todolist-update" target="_blank" rel="noopener noreferrer">点击此处查看源码<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></blockquote> <h2 id="_8-2-单页应用-todo-list"><a href="#_8-2-单页应用-todo-list" class="header-anchor">#</a> 8.2 单页应用 Todo List</h2> <p>基于这里开始，我们会使用到更多的组件、以及路由，所以我们使用 Vue CLI 脚手架来本地构建吧。脚手架的安装和使用已经在<a href="/vue-ebook/vue-ebook/2.html">第2章</a>详细讲解了，这里我们就略过不说啦。</p> <h3 id="_8-2-2-使用-vue-router"><a href="#_8-2-2-使用-vue-router" class="header-anchor">#</a> 8.2.2 使用 Vue Router</h3> <p>如果是单组件的页面话，我们在各种切换状态的过程中不会更新到 URL。这样有个不好的地方是，当我们刷新页面的时候，就会丢失当前的页面状态，这样用户体验会比较差，所以这里我们加上 Vue Router 路由来进行路由相关的处理。</p> <h4 id="使用-query-作为参数"><a href="#使用-query-作为参数" class="header-anchor">#</a> 使用 query 作为参数</h4> <p>我们给当前的 Todo List 增加一个状态过滤，来切换展示已完成、未完成、全部的备忘，所以其实我们路由配置只需要配一个页面的路由，状态使用<code>query</code>来传参就可以了：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> Todo <span class="token keyword">from</span> <span class="token string">&quot;pages/Todo.vue&quot;</span><span class="token punctuation">;</span>
+<span class="token comment">// 配置路由信息</span>
+<span class="token keyword">const</span> routes <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span> path<span class="token operator">:</span> <span class="token string">&quot;/todo&quot;</span><span class="token punctuation">,</span> component<span class="token operator">:</span> Todo<span class="token punctuation">,</span> name<span class="token operator">:</span> <span class="token string">&quot;Todo&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token comment">// 通配符 * 会匹配所有路径</span>
+  <span class="token punctuation">{</span> path<span class="token operator">:</span> <span class="token string">&quot;*&quot;</span><span class="token punctuation">,</span> redirect<span class="token operator">:</span> <span class="token punctuation">{</span> name<span class="token operator">:</span> <span class="token string">&quot;Todo&quot;</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre></div><p>同时，我们需要给几个 Tab 添加激活状态：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>filters<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token comment">&lt;!-- exact 设置精确匹配，active-class 设置激活状态 --&gt;</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>router-link</span> <span class="token attr-name">:to</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>{query: {state: <span class="token punctuation">'</span><span class="token punctuation">'</span>}}<span class="token punctuation">&quot;</span></span> <span class="token attr-name">active-class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>selected<span class="token punctuation">&quot;</span></span> <span class="token attr-name">exact</span>
+      <span class="token punctuation">&gt;</span></span>All<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>router-link</span>
+    <span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>router-link</span> <span class="token attr-name">:to</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>{query: {state: <span class="token punctuation">'</span>active<span class="token punctuation">'</span>}}<span class="token punctuation">&quot;</span></span> <span class="token attr-name">active-class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>selected<span class="token punctuation">&quot;</span></span> <span class="token attr-name">exact</span>
+      <span class="token punctuation">&gt;</span></span>Active<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>router-link</span>
+    <span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>router-link</span>
+      <span class="token attr-name">:to</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>{query: {state: <span class="token punctuation">'</span>completed<span class="token punctuation">'</span>}}<span class="token punctuation">&quot;</span></span>
+      <span class="token attr-name">active-class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>selected<span class="token punctuation">&quot;</span></span>
+      <span class="token attr-name">exact</span>
+      <span class="token punctuation">&gt;</span></span>Completed<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>router-link</span>
+    <span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>当然，我们计算当前列表的时候，就加上状态过滤就好了：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 其他选项省略</span>
+  computed<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 计算当前可见的备忘</span>
+    <span class="token function">computedTodos</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 先过滤状态</span>
+      <span class="token comment">// this.$route 可以获取当前路由信息</span>
+      <span class="token keyword">const</span> state <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>$route<span class="token punctuation">.</span>query<span class="token punctuation">.</span>state<span class="token punctuation">;</span>
+      <span class="token keyword">const</span> filterTodos <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>todos<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token parameter">x</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>state <span class="token operator">===</span> <span class="token string">&quot;active&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">return</span> <span class="token operator">!</span>x<span class="token punctuation">.</span>completed<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>state <span class="token operator">===</span> <span class="token string">&quot;completed&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">return</span> x<span class="token punctuation">.</span>completed<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+          <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment">// 再过滤展示匹配的内容</span>
+      <span class="token keyword">return</span> filterTodos<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token parameter">item</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>
+          item<span class="token punctuation">.</span>title<span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>newTodo<span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!==</span> <span class="token operator">-</span><span class="token number">1</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><p>这样调整之后，我们最终的效果如图：</p> <p><img src="https://github-imglib-1255459943.cos.ap-chengdu.myqcloud.com/vue-8-3.jpg" alt="image"><br>
+图 8-3 加入路由后的 Todo List</p> <h4 id="使用缓存"><a href="#使用缓存" class="header-anchor">#</a> 使用缓存</h4> <p>如果说我们希望刷新页面之后，原本的备忘还在，这个时候我们就需要把内容写到缓存里。这里我们使用<code>localStorage</code>来存储：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 其他选项省略</span>
+  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 初始化的时候，获取下本地的缓存</span>
+      todos<span class="token operator">:</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>localStorage<span class="token punctuation">.</span><span class="token function">getItem</span><span class="token punctuation">(</span><span class="token string">&quot;todos&quot;</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token string">&quot;[]&quot;</span><span class="token punctuation">)</span> <span class="token comment">// 所有的备忘</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  watch<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 侦听 todos 的变化</span>
+    <span class="token function">todos</span><span class="token punctuation">(</span><span class="token parameter">newVal</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 每次更新写入缓存</span>
+      localStorage<span class="token punctuation">.</span><span class="token function">setItem</span><span class="token punctuation">(</span><span class="token string">&quot;todos&quot;</span><span class="token punctuation">,</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>newVal<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><p>这样，我们在初始化组件（页面）的时候，就从本地缓存获取。而当我们每次更新备忘数据的时候，也同步写到缓存里，这样就很方便了。关于缓存，除了 localStorage 之外，还可以使用 sessionStorage。不同之处在于 localStorage 里面存储的数据没有过期时间设置，而存储在 sessionStorage 里面的数据在页面会话结束（当前浏览器标签关闭）时会被清除。</p> <h3 id="_8-2-3-promise-与异步组件"><a href="#_8-2-3-promise-与异步组件" class="header-anchor">#</a> 8.2.3 Promise 与异步组件</h3> <p>在很多 Web 应用中，基本上都会有弹窗需要用户确认的交互。在很久以前，我们会使用浏览器原生的<code>window.alert</code>、<code>window.confirm</code>来获取用户反馈。但是这种方法存在两个问题：<br>
+(1) Javascript 单线程会卡住等待，会阻塞其他逻辑的执行（例如要下载数据）。<br>
+(2) 实在太丑了。</p> <p>所以现在我们一般都会自己做一个弹窗，但是自己做的弹窗就会有另外的问题。例如我们在用户点击删除按钮的时候，需要用户进行二次确认。但是如果是自己做的一个弹窗，如果不使用等待回调的方式，逻辑是会继续往后执行，可能出现的结果就是用户还没确认，就被删掉了，这个弹窗形同虚设：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token function">waitForConfirm</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 等待确认</span>
+<span class="token comment">// 由于 Javascript 函数执行是异步的，所以下面的函数会继续执行</span>
+<span class="token comment">// 结果：上面的等待过程形同虚设，删除逻辑会直接执行</span>
+<span class="token function">deleteSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 删除</span>
+</code></pre></div><p>最好的方式是通过 Promise 来进行弹窗，要实现使用 Promise，需要监听用户的确认或取消的，然后通过<code>reject</code>或是<code>resolve</code>来继续处理后续逻辑。一般来说，我们可以有几种方式：<br>
+(1) 使用全局状态管理工具，例如 Vuex。<br>
+(2) 使用事件监听<code>vm.$emit</code>和<code>vm.$on</code>。</p> <p>这里由于我们还没讲到 Vuex，所以先直接使用事件监听的方法来做，Vuex 的方法可参考<a href="/vue-ebook/vue-ebook/11.html">《第11章 全局数据管理与 Vuex》</a>。</p> <h4 id="_1-全局事件"><a href="#_1-全局事件" class="header-anchor">#</a> 1. 全局事件</h4> <p>Vue 实例提供了事件的触发和监听，如果我们想要全局的方式来进行通信，可以直接获取最外层的 Vue 实例：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// main.js</span>
+<span class="token comment">// 默认 export 该 Vue 实例</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  el<span class="token operator">:</span> <span class="token string">&quot;#app&quot;</span><span class="token punctuation">,</span>
+  router<span class="token punctuation">,</span> <span class="token comment">// 传入路由能力</span>
+  <span class="token function-variable function">render</span><span class="token operator">:</span> <span class="token parameter">h</span> <span class="token operator">=&gt;</span> <span class="token function">h</span><span class="token punctuation">(</span>App<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>然后我们就可以提供一个公共函数方法来触发：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// confirm.js</span>
+<span class="token comment">// 获取该实例</span>
+<span class="token keyword">import</span> vm <span class="token keyword">from</span> <span class="token string">&quot;../main&quot;</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 传入标题、内容、确认按钮和取消按钮的文案</span>
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">confirmDialog</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> title<span class="token punctuation">,</span> text<span class="token punctuation">,</span> cancelText<span class="token punctuation">,</span> confirmText <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 把 reject 和 resolve 通过 $emit 事件传参带过去，方便进行 Promise 状态扭转</span>
+    vm<span class="token punctuation">.</span><span class="token function">$emit</span><span class="token punctuation">(</span><span class="token string">&quot;setDialog&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+      title<span class="token punctuation">,</span>
+      text<span class="token punctuation">,</span>
+      cancelText<span class="token punctuation">,</span>
+      confirmText<span class="token punctuation">,</span>
+      resolve<span class="token punctuation">,</span>
+      reject
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> confirmDialog<span class="token punctuation">;</span>
+</code></pre></div><h4 id="_2-设计弹窗"><a href="#_2-设计弹窗" class="header-anchor">#</a> 2. 设计弹窗</h4> <p>现在提供了这样的事件触发，我们需要提供一个弹窗的组件。这里我们直接从 Bootstrap 拿一个弹窗的样式过来，Javascript 的逻辑文件就不用下载啦，我们自己控制就好：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token comment">&lt;!-- ConfirmDialog.vue --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token comment">&lt;!-- 强制出现 display: block --&gt;</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>modal<span class="token punctuation">&quot;</span></span> <span class="token attr-name">tabindex</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>-1<span class="token punctuation">&quot;</span></span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>dialog<span class="token punctuation">&quot;</span></span> <span class="token style-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span><span class="token style language-css"><span class="token property">display</span><span class="token punctuation">:</span> block</span><span class="token punctuation">&quot;</span></span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>modal-dialog<span class="token punctuation">&quot;</span></span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>document<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>modal-content<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>modal-header<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>button<span class="token punctuation">&quot;</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>close<span class="token punctuation">&quot;</span></span> <span class="token attr-name">aria-label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>Close<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">aria-hidden</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>true<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token entity named-entity" title="&amp;times;">&amp;times;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+          <span class="token comment">&lt;!-- 弹窗标题 --&gt;</span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h4</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>modal-title<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>{{dialogInfo.title || '提示'}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h4</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>modal-body<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+          <span class="token comment">&lt;!-- 弹窗内容 --&gt;</span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>{{dialogInfo.text}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>modal-footer<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+          <span class="token comment">&lt;!-- 取消按钮，点击取消，cancelText 可设置按钮文案 --&gt;</span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>button<span class="token punctuation">&quot;</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>btn btn-default<span class="token punctuation">&quot;</span></span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>cancel()<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+            {{dialogInfo.cancelText || '取消'}}
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+          <span class="token comment">&lt;!-- 确认按钮，点击确认，confirmText 可设置按钮文案 --&gt;</span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>button<span class="token punctuation">&quot;</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>btn btn-primary<span class="token punctuation">&quot;</span></span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>confirm()<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+            {{dialogInfo.confirmText || '确认'}}
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword">import</span> vm <span class="token keyword">from</span> <span class="token string">&quot;../main&quot;</span><span class="token punctuation">;</span>
+  <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+    props<span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 弹窗相关信息</span>
+      dialogInfo<span class="token operator">:</span> <span class="token punctuation">{</span>
+        type<span class="token operator">:</span> Object<span class="token punctuation">,</span>
+        <span class="token function-variable function">default</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 点击取消</span>
+      <span class="token function">cancel</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 要先判断下 reject 方法在不在</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>dialogInfo<span class="token punctuation">.</span>reject<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token comment">// 取消就 reject 掉呀</span>
+          <span class="token keyword">this</span><span class="token punctuation">.</span>dialogInfo<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token comment">// 触发 done 事件，方便后续弹窗关闭、移除等逻辑处理</span>
+          <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">$emit</span><span class="token punctuation">(</span><span class="token string">&quot;done&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token comment">// 点击确认</span>
+      <span class="token function">confirm</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 要先判断下 resolve 方法在不在</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>dialogInfo<span class="token punctuation">.</span>resolve<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token comment">// 确认就 resolve 掉</span>
+          <span class="token keyword">this</span><span class="token punctuation">.</span>dialogInfo<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token comment">// 触发 done 事件，方便后续弹窗关闭、移除等逻辑处理</span>
+          <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">$emit</span><span class="token punctuation">(</span><span class="token string">&quot;done&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span> <span class="token attr-name">scoped</span><span class="token punctuation">&gt;</span></span><span class="token style"><span class="token language-css">
+  <span class="token comment">/* scoped：该组件中局部引入 bootstrap 样式，不影响全局样式 */</span>
+  <span class="token atrule"><span class="token rule">@import</span> <span class="token string">&quot;https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css&quot;</span><span class="token punctuation">;</span></span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>这里能看到，我们通过 Prop 传入<code>dialogInfo</code>，里面除了标题、内容、按钮文案，还包括了前面说到的<code>resolve</code>和<code>reject</code>方法。这里会在用户点击确认或者取消的时候调用对应的方法，就可以正常地处理后面的相关逻辑了。同时这里还在用户响应的时候，使用<code>this.$emit(&quot;done&quot;)</code>触发了名为<code>done</code>的事件，父组件可以监听并进行其他的逻辑处理。</p> <h4 id="_3-最外层组件注入"><a href="#_3-最外层组件注入" class="header-anchor">#</a> 3. 最外层组件注入</h4> <p>现在我们已经有了可用的弹窗组件，也有了传入参数、触发事件的<code>confirmDialog</code>方法。那么我们要实现的还剩下：<br>
+(1) 监听<code>setDialog</code>事件，并获取对应的传参数据。<br>
+(2) 事件触发的时候，添加弹窗。</p> <p>这里通过每次监听到<code>setDialog</code>事件的时候，都新增一个弹窗的方式，可以支持同时多个弹窗的交互确认：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token comment">&lt;!-- App.vue --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!-- 使用 &lt;router-view&gt;&lt;/router-view&gt; 来渲染最高级路由匹配到的组件 --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>router-view</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>router-view</span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!-- 动态组件由 vm 实例的 component 控制 --&gt;</span>
+    <span class="token comment">&lt;!-- done 事件绑定用户操作完毕 --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>component</span>
+      <span class="token attr-name">v-for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>(item, index) in items<span class="token punctuation">&quot;</span></span>
+      <span class="token attr-name">:key</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>index<span class="token punctuation">&quot;</span></span>
+      <span class="token attr-name">:is</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>item.component<span class="token punctuation">&quot;</span></span>
+      <span class="token attr-name">:dialogInfo</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>item.dialogInfo<span class="token punctuation">&quot;</span></span>
+      <span class="token attr-name">@done</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>doneDialog(index)<span class="token punctuation">&quot;</span></span>
+    <span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>component</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+  <span class="token comment">// 弹窗组件</span>
+  <span class="token keyword">import</span> ConfirmDialog <span class="token keyword">from</span> <span class="token string">&quot;./components/ConfirmDialog&quot;</span><span class="token punctuation">;</span>
+  <span class="token comment">// 获取 Vue 实例</span>
+  <span class="token keyword">import</span> vm <span class="token keyword">from</span> <span class="token string">&quot;./main&quot;</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+    name<span class="token operator">:</span> <span class="token string">&quot;app&quot;</span><span class="token punctuation">,</span>
+    <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token punctuation">{</span>
+        items<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+      <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function">mounted</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 如果在这里，首次加载页面的时候，无法正确获取到 Vue 实例</span>
+      <span class="token comment">// DOM 还没有更新</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">$nextTick</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token comment">// DOM 现在更新了</span>
+        vm<span class="token punctuation">.</span><span class="token function">$on</span><span class="token punctuation">(</span><span class="token string">&quot;setDialog&quot;</span><span class="token punctuation">,</span> <span class="token parameter">dialogInfo</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+          <span class="token comment">// 将弹窗相关信息、弹窗组件添加进 component 数组中</span>
+          <span class="token keyword">this</span><span class="token punctuation">.</span>items<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span> dialogInfo<span class="token punctuation">,</span> component<span class="token operator">:</span> ConfirmDialog <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token function">doneDialog</span><span class="token punctuation">(</span><span class="token parameter">index</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 用户已经点击了该弹窗，可以从列表中移除了</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>items<span class="token punctuation">.</span><span class="token function">splice</span><span class="token punctuation">(</span>index<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>这里我们用到了一个前面没有讲过的内置组件<code>&lt;component&gt;&lt;/component&gt;</code>，它渲染一个“元组件”为动态组件。根据<code>is</code>的值，来决定哪个组件被渲染，例如这里我们的<code>is</code>绑定了 ComformDialog 组件。</p> <h4 id="_4-拉起弹窗"><a href="#_4-拉起弹窗" class="header-anchor">#</a> 4. 拉起弹窗</h4> <p>前面我们已经把基础的组件和方法、环境都搭建好了，现在我们只需要像正常的异步 Promise 一样去使用就可以了：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> confirmDialog <span class="token keyword">from</span> <span class="token string">&quot;../utils/comfirm&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 省略其他的选项</span>
+  methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 删除备忘</span>
+    <span class="token function">removeTodo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 传入弹窗的内容，并通过 then 和 catch 来获取用户的操作，以便继续后续的逻辑处理</span>
+      <span class="token function">confirmDialog</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        text<span class="token operator">:</span> <span class="token string">&quot;确认要删除吗？&quot;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">res</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+          <span class="token comment">// 用户点击确认</span>
+          <span class="token comment">// 通知父组件删除</span>
+          <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">$emit</span><span class="token punctuation">(</span><span class="token string">&quot;delete&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+          <span class="token comment">// 用户点击取消</span>
+          console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;用户点击了取消&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><p>最终效果如图 8-4:<br> <img src="https://github-imglib-1255459943.cos.ap-chengdu.myqcloud.com/vue-8-4.png" alt="image"><br>
+图 8-4 Todo List 弹窗效果</p> <blockquote><p><a href="https://vue-eboook-1255459943.cos.ap-chengdu.myqcloud.com/8/3-todolist-app/index.html" target="_blank" rel="noopener noreferrer">点击此处查看页面效果<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> <a href="https://github.com/godbasin/vue-ebook/tree/vue-sourcecode/8/3-todolist-app" target="_blank" rel="noopener noreferrer">点击此处查看源码<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></blockquote> <p>到这里，我们已经将这个 Todo List 玩得出神入化了。如果是更大一点的项目，其实还会需要状态管理的工具（例如 Vuex 等）。如果使用了 Vuex，还可以使用 Store 来更新弹窗的状态，就不需要这种事件监听的复杂方法啦。</p> <p>关于状态管理的，会在<a href="/vue-ebook/vue-ebook/11.html">《第11章 全局数据管理与 Vuex》</a>讲述。到这里为止，我们已经介绍了 Vue 中大部分的概念和常用 API、实例选项等，在规模不大的项目中已经足够用了。而第一部分的内容也到这，第二部分的内容更多的是多人合作的项目、较大型项目的一些开发和管理经验，同时还有很多实战经验沉淀下来的一些思维方法，可以提升开发效率和降低维护成本噢。</p></div> <!----> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/godbasin/vue-ebook/edit/ebook-sourcecode/docs/vue-ebook/8.md" target="_blank" rel="noopener noreferrer">帮阿猪改善此页面！</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <!----> <div style="margin-top:30px;"><div class="el-row" style="margin-left:-10px;margin-right:-10px;"><div class="el-col el-col-24 el-col-sm-0 el-col-md-2 el-col-lg-4" style="padding-left:10px;padding-right:10px;display:block;"><div style="width:1px;height:1px;"></div></div> <div class="el-col el-col-24 el-col-sm-24 el-col-md-18 el-col-lg-16" style="padding-left:10px;padding-right:10px;"><div class="el-card box-card is-always-shadow"><div class="el-card__header"><div class="clearfix"><span>温馨提示喵</span></div></div><div class="el-card__body"> <div class="el-row" style="margin-left:-10px;margin-right:-10px;"><div class="el-col el-col-24 el-col-xs-24 el-col-sm-12" style="padding-left:10px;padding-right:10px;"><div class="el-image"><div class="image-slot"><img src="https://github-imglib-1255459943.cos.ap-chengdu.myqcloud.com/assets/img/loading.gif" style="width:100%;"></div><!----></div></div> <div class="el-col el-col-24 el-col-xs-24 el-col-sm-12" style="padding-left:10px;padding-right:10px;"><div class="copyright-text"><div>本书采用“保持署名—非商用”<a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">创意共享4.0许可证</a>。只要保持原作者署名和非商用，您可以自由地阅读、分享、修改本书。</div> <div>作者：<a href="https://github.com/godbasin" target="_blank">被删</a></div></div></div></div></div></div></div></div></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/vue-ebook/vue-ebook/7.html" class="prev">
+          第7章 Vue Router 路由搭建应用
+        </a></span> <span class="next"><a href="/vue-ebook/vue-ebook/9.html">
+          第9章 思维转变与大型项目管理
+        </a>
+        →
+      </span></p></div>  <div class="gitalk-container theme-default-content"><div id="gitalk-container" class="content"></div></div></main> <div id="kitty-container"><span><div role="tooltip" id="el-popover-2580" aria-hidden="true" class="el-popover el-popper" style="width:undefinedpx;display:none;"><!----><img src="https://github-imglib-1255459943.cos.ap-chengdu.myqcloud.com/2code2.jpg" class="image"> <div class="text">牡羊猪的猫粮罐</div> </div><span class="el-popover__reference-wrapper"><div id="kitty" style="background:url(https://github-imglib-1255459943.cos.ap-chengdu.myqcloud.com/assets/img/kitty2.svg);"></div></span></span> <div class="el-dialog__wrapper" style="display:none;"><div role="dialog" aria-modal="true" aria-label="牡羊猪是这样渐渐胖成猪的喵（点击图片可以切换噢）" class="el-dialog" style="margin-top:15vh;"><div class="el-dialog__header"><span class="el-dialog__title">牡羊猪是这样渐渐胖成猪的喵（点击图片可以切换噢）</span><button type="button" aria-label="Close" class="el-dialog__headerbtn"><i class="el-dialog__close el-icon el-icon-close"></i></button></div><!----><!----></div></div></div></div><div class="global-ui"></div></div>
+    <script src="/vue-ebook/assets/js/app.2f410bb9.js" defer></script><script src="/vue-ebook/assets/js/2.d60fd2a5.js" defer></script><script src="/vue-ebook/assets/js/3.c15c8d98.js" defer></script><script src="/vue-ebook/assets/js/22.5b27d5dc.js" defer></script>
+  </body>
+</html>
