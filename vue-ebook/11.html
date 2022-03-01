@@ -4,11 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>第11章 全局数据管理与 Vuex | 深入理解Vue.js实战</title>
-    <meta name="generator" content="VuePress 1.8.2">
+    <meta name="generator" content="VuePress 1.9.7">
     
     <meta name="description" content="作者：被删">
     
-    <link rel="preload" href="/vue-ebook/assets/css/0.styles.2728a2da.css" as="style"><link rel="preload" href="/vue-ebook/assets/js/app.4a56433d.js" as="script"><link rel="preload" href="/vue-ebook/assets/js/2.a5c7c816.js" as="script"><link rel="preload" href="/vue-ebook/assets/js/3.a4a7a326.js" as="script"><link rel="preload" href="/vue-ebook/assets/js/10.778c6ead.js" as="script">
+    <link rel="preload" href="/vue-ebook/assets/css/0.styles.2728a2da.css" as="style"><link rel="preload" href="/vue-ebook/assets/js/app.d42cfe3d.js" as="script"><link rel="preload" href="/vue-ebook/assets/js/2.2a4d101b.js" as="script"><link rel="preload" href="/vue-ebook/assets/js/3.9083e877.js" as="script"><link rel="preload" href="/vue-ebook/assets/js/10.adca14b7.js" as="script">
     <link rel="stylesheet" href="/vue-ebook/assets/css/0.styles.2728a2da.css">
   </head>
   <body>
@@ -19,7 +19,7 @@
     <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0" style="padding-top:;"><!----> <p class="sidebar-heading"><span>前言</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/vue-ebook/vue-ebook/0.html" class="sidebar-link">前端框架的出现</a></li></ul></section></li><li><section class="sidebar-group depth-0" style="padding-top:;"><!----> <p class="sidebar-heading"><span>第一部分 Vue快速入门</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/vue-ebook/vue-ebook/1.html" class="sidebar-link">第1章 Vue 框架介绍</a></li><li><a href="/vue-ebook/vue-ebook/2.html" class="sidebar-link">第2章 Vue 环境快速搭建</a></li><li><a href="/vue-ebook/vue-ebook/3.html" class="sidebar-link">第3章 Vue 基础介绍</a></li><li><a href="/vue-ebook/vue-ebook/4.html" class="sidebar-link">第4章 Vue 组件的使用</a></li><li><a href="/vue-ebook/vue-ebook/5.html" class="sidebar-link">第5章 常用指令和自定义指令</a></li><li><a href="/vue-ebook/vue-ebook/6.html" class="sidebar-link">第6章 Vue 动画</a></li><li><a href="/vue-ebook/vue-ebook/7.html" class="sidebar-link">第7章 Vue Router 路由搭建应用</a></li><li><a href="/vue-ebook/vue-ebook/8.html" class="sidebar-link">第8章 实战：Todo List 从组件到应用</a></li></ul></section></li><li><section class="sidebar-group depth-0" style="padding-top:10px;"><div class="kitty-main" data-v-2b653b36><span class="stand" data-v-2b653b36></span> <div class="cat" data-v-2b653b36><div class="body" data-v-2b653b36></div> <div class="head" data-v-2b653b36><div class="ear" data-v-2b653b36></div> <div class="ear" data-v-2b653b36></div></div> <div class="face" data-v-2b653b36><div class="nose" data-v-2b653b36></div> <div class="whisker-container" data-v-2b653b36><div class="whisker" data-v-2b653b36></div> <div class="whisker" data-v-2b653b36></div></div> <div class="whisker-container" data-v-2b653b36><div class="whisker" data-v-2b653b36></div> <div class="whisker" data-v-2b653b36></div></div></div> <div class="tail-container" data-v-2b653b36><div class="tail" data-v-2b653b36><div class="tail" data-v-2b653b36><div class="tail" data-v-2b653b36><div class="tail" data-v-2b653b36><div class="tail" data-v-2b653b36><div class="tail" data-v-2b653b36><div class="tail" data-v-2b653b36></div></div></div></div></div></div></div></div></div></div> <p class="sidebar-heading open"><span>第二部分 Vue的正确使用方式</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/vue-ebook/vue-ebook/9.html" class="sidebar-link">第9章 思维转变与大型项目管理</a></li><li><a href="/vue-ebook/vue-ebook/10.html" class="sidebar-link">第10章 如何正确地进行抽象</a></li><li><a href="/vue-ebook/vue-ebook/11.html" aria-current="page" class="active sidebar-link">第11章 全局数据管理与 Vuex</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vue-ebook/vue-ebook/11.html#_11-1-组件间通信" class="sidebar-link">11.1 组件间通信</a></li><li class="sidebar-sub-header"><a href="/vue-ebook/vue-ebook/11.html#_11-2-全局数据管理" class="sidebar-link">11.2 全局数据管理</a></li><li class="sidebar-sub-header"><a href="/vue-ebook/vue-ebook/11.html#_11-3-使用-vuex" class="sidebar-link">11.3 使用 Vuex</a></li></ul></li><li><a href="/vue-ebook/vue-ebook/12.html" class="sidebar-link">第12章 实战：三天开发一个管理端</a></li><li><a href="/vue-ebook/vue-ebook/13.html" class="sidebar-link">第13章 实战：表单配置化实现</a></li><li><a href="/vue-ebook/vue-ebook/14.html" class="sidebar-link">第14章 实战：使用 Webpack 或 Vue CLI 搭建多页应用</a></li><li><a href="/vue-ebook/vue-ebook/15.html" class="sidebar-link">第15章 Vue 周边拓展</a></li><li><a href="/vue-ebook/vue-ebook/16.html" class="sidebar-link">第16章 关于 Vue 3.0</a></li></ul></section></li><li><section class="sidebar-group depth-0" style="padding-top:;"><!----> <p class="sidebar-heading"><span>后记</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/vue-ebook/vue-ebook/99.html" class="sidebar-link">关于框架选型</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="第11章-全局数据管理与-vuex"><a href="#第11章-全局数据管理与-vuex" class="header-anchor">#</a> 第11章 全局数据管理与 Vuex</h1> <blockquote><p>本章节相关代码存放在<a href="https://github.com/godbasin/vue-ebook/tree/vue-sourcecode/11" target="_blank" rel="noopener noreferrer">Github<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>中。</p></blockquote> <p>通常来说，我们刚开始一个项目的时候，项目规模都比较少。这样的情况下，我们并不会引入过于复杂的数据和状态管理工具，而随着我们项目在不断地变大、各个页面中需要共享和通信的内容越来越多，同时也加入了新成员、不同开发之间的习惯不一致，于是到后期可能会出现事件的传递、全局数据满天飞的情况。</p> <p>这样会有什么隐患呢？大概就是当我们想要改某个全局数据的时候，发现影响到了其他的页面。更让人头疼的是在测试的时候并没有发现（毕竟有在项目规模较大的情况下，回归测试的成本也会越来越重），然后触发了线上事故。</p> <p>当然，即使在这样的情况下，也并不意味着我们需要在一开始就需要使用很完善的工具库。除非是项目在最初就已经定位为较大规模，这种情况下我们需要根据预期来选型。否则项目在不断维护和壮大的过程中，我们需要不断地进行优化甚至重构，同时根据需要引进不同的工具库来进行管理。</p> <p>我们来看一下，一般全局数据要用怎样的方式来管理会比较好。</p> <h2 id="_11-1-组件间通信"><a href="#_11-1-组件间通信" class="header-anchor">#</a> 11.1 组件间通信</h2> <p>在 Vue 中，不管是页面也好，是模块或是公共组件也好，相互之间的通信几乎是必不可少的。我们先来看一下前面讲过的一些数据通信的方式。</p> <h3 id="_11-1-1-父子组件通信"><a href="#_11-1-1-父子组件通信" class="header-anchor">#</a> 11.1.1 父子组件通信</h3> <p><a href="/vue-ebook/vue-ebook/4.html">第4章</a>中，我们其实也已经简单介绍过父子组件之间的通信，一般来说会通过 Prop 从父组件往子组件传递数据，同时子组件可以通过<code>$emit()</code>把数据传递到父组件。除此之外，父组件还可以通过<code>ref</code>来引用和访问子组件。同样的，还可以使用<code>$parent</code>、<code>$children</code>、<code>$root</code>等 API 来分别获取父实例、子实例和根实例。</p> <p>那么，除了父子以外的组件要怎么处理呢？</p> <h3 id="_11-1-2-全局事件管理"><a href="#_11-1-2-全局事件管理" class="header-anchor">#</a> 11.1.2 全局事件管理</h3> <p>除了不断地使用<code>$parent</code>、<code>$children</code>、<code>$root</code>等 API 来叠加使用获取想要的实例（不推荐这样的操作，因为一旦布局调整就变得很被动了），我们可以在根实例上提供统一的事件处理，同时封装成公共库的方式来提供。这里直接使用<a href="/vue-ebook/vue-ebook/8.html">第8章</a>中 Todo List 弹窗来作为例子，通过在最外层导出根实例：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// main.js</span>
 <span class="token comment">// 默认 export 该 Vue 实例</span>
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  el<span class="token operator">:</span> <span class="token string">&quot;#app&quot;</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">el</span><span class="token operator">:</span> <span class="token string">&quot;#app&quot;</span><span class="token punctuation">,</span>
   router<span class="token punctuation">,</span> <span class="token comment">// 传入路由能力</span>
   <span class="token function-variable function">render</span><span class="token operator">:</span> <span class="token parameter">h</span> <span class="token operator">=&gt;</span> <span class="token function">h</span><span class="token punctuation">(</span>App<span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -49,7 +49,7 @@
     <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">$nextTick</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
       vm<span class="token punctuation">.</span><span class="token function">$on</span><span class="token punctuation">(</span><span class="token string">&quot;setDialog&quot;</span><span class="token punctuation">,</span> <span class="token parameter">dialogInfo</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
         <span class="token comment">// 将弹窗相关信息、弹窗组件添加进 component 数组中</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>items<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span> dialogInfo<span class="token punctuation">,</span> component<span class="token operator">:</span> ConfirmDialog <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>items<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span> dialogInfo<span class="token punctuation">,</span> <span class="token literal-property property">component</span><span class="token operator">:</span> ConfirmDialog <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
       <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
@@ -127,7 +127,7 @@
     <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">$nextTick</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
       eventBus<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">&quot;setDialog&quot;</span><span class="token punctuation">,</span> <span class="token parameter">dialogInfo</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
         <span class="token comment">// 将弹窗相关信息、弹窗组件添加进 component 数组中</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>items<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span> dialogInfo<span class="token punctuation">,</span> component<span class="token operator">:</span> ConfirmDialog <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>items<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span> dialogInfo<span class="token punctuation">,</span> <span class="token literal-property property">component</span><span class="token operator">:</span> ConfirmDialog <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
       <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
@@ -174,7 +174,7 @@
   <span class="token comment">// state</span>
   <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> <span class="token punctuation">{</span>
-      count<span class="token operator">:</span> <span class="token number">0</span>
+      <span class="token literal-property property">count</span><span class="token operator">:</span> <span class="token number">0</span>
     <span class="token punctuation">}</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -184,11 +184,11 @@ Vue<span class="token punctuation">.</span><span class="token function">use</spa
 <span class="token comment">// 创建一个Store</span>
 <span class="token keyword">const</span> store <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vuex<span class="token punctuation">.</span>Store</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
   <span class="token comment">// 设置状态</span>
-  state<span class="token operator">:</span> <span class="token punctuation">{</span>
-    count<span class="token operator">:</span> <span class="token number">0</span>
+  <span class="token literal-property property">state</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">count</span><span class="token operator">:</span> <span class="token number">0</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token comment">// Mutation用于更新状态</span>
-  mutations<span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">mutations</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token function">increment</span><span class="token punctuation">(</span><span class="token parameter">state</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       state<span class="token punctuation">.</span>count<span class="token operator">++</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
@@ -204,38 +204,38 @@ Vue<span class="token punctuation">.</span><span class="token function">use</spa
 </code></pre></div><p>当然，我们也可以通过创建单文件或是全局对象的方式来维护这些全局的状态。但这样的方式中，数据的变化不能得到监听，需要使用方自行地去获取。我们还可以使用事件、<code>getter/setter</code>的方式来进行，但依然存在一个问题，数据的变化无法直接更新到组件和页面中。所以就有了 Vuex，使用 Vuex 我们可以获得以下效果：<br>
 (1) 当 Vue 组件从 Store 中读取状态的时候，若 Store 中的状态发生变化，那么相应的组件也会相应地得到高效更新。<br>
 (2) 改变 Store 中的状态只能通过 Action 或者 Mutation，这样使得我们可以方便地跟踪每一个状态的变化，来定位具体问题。</p> <p>每个应用将仅仅包含一个 Store 实例，单一状态树让我们能够直接地定位任一特定的状态片段，在调试的过程中也能轻易地取得整个当前应用状态的快照。但如果每个应用只包含了一个 Store，我们要怎样避免在不断引入全局状态的时候，避免 Store 变得臃肿呢？</p> <h4 id="module"><a href="#module" class="header-anchor">#</a> Module</h4> <p>为了解决应用变得复杂时 Store 难以维护，Vuex 允许我们将 Store 分割成模块 Module。每个模块拥有自己的 State、Mutation、Action 等，其实相当于我们将一个 Store 单一对象分成多个对象来维护，但最终也会合并为一个来进行更新，这样即使是多个模块也能够对同一 Mutation 或 Action 作出响应。</p> <p>那如果我们在不同的页面中，有相同的一些状态命名发生了冲突，要如何解决呢？我们还可以通过添加<code>namespaced: true</code>的方式，来创建带命名空间的模块，同时 Module 还支持嵌套使用：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> store <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vuex<span class="token punctuation">.</span>Store</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  modules<span class="token operator">:</span> <span class="token punctuation">{</span>
-    account<span class="token operator">:</span> <span class="token punctuation">{</span>
-      namespaced<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// 带命名空间</span>
+  <span class="token literal-property property">modules</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">account</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">namespaced</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// 带命名空间</span>
       <span class="token comment">// 模块内容（module assets）</span>
-      state<span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token comment">// 模块内的状态已经是嵌套的了，使用namespaced属性不会对其产生影响</span>
+      <span class="token literal-property property">state</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token comment">// 模块内的状态已经是嵌套的了，使用namespaced属性不会对其产生影响</span>
       <span class="token comment">// 可以拥有自己的Action和Mutation</span>
-      actions<span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">actions</span><span class="token operator">:</span> <span class="token punctuation">{</span>
         <span class="token function">login</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span> <span class="token comment">// -&gt; dispatch('account/login')</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
-      mutations<span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">mutations</span><span class="token operator">:</span> <span class="token punctuation">{</span>
         <span class="token function">login</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span> <span class="token comment">// -&gt; commit('account/login')</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
       <span class="token comment">// 嵌套模块</span>
-      modules<span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">modules</span><span class="token operator">:</span> <span class="token punctuation">{</span>
         <span class="token comment">// 继承父模块的命名空间</span>
-        myPage<span class="token operator">:</span> <span class="token punctuation">{</span>
-          state<span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span>
+        <span class="token literal-property property">myPage</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token literal-property property">state</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span>
         <span class="token punctuation">}</span><span class="token punctuation">,</span>
         <span class="token comment">// 进一步嵌套命名空间</span>
-        posts<span class="token operator">:</span> <span class="token punctuation">{</span>
-          namespaced<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-          state<span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span>
+        <span class="token literal-property property">posts</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token literal-property property">namespaced</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+          <span class="token literal-property property">state</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span>
         <span class="token punctuation">}</span>
       <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 </code></pre></div><h4 id="mutation"><a href="#mutation" class="header-anchor">#</a> Mutation</h4> <p>前面在 Store 的代码示例中也有出现过 Mutation，我们也说过，数据流的单向流动可以让开发者掌握所有数据状态的变更来源和去向。而 Mutation 的作用类似于一个守卫，所有的状态变更都必须来自 Mutation：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> store <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vuex<span class="token punctuation">.</span>Store</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  state<span class="token operator">:</span> <span class="token punctuation">{</span>
-    count<span class="token operator">:</span> <span class="token number">1</span>
+  <span class="token literal-property property">state</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">count</span><span class="token operator">:</span> <span class="token number">1</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  mutations<span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">mutations</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token comment">// 每个 Mutation 都有一个字符串的事件类型 type 和一个回调函数 handler</span>
     <span class="token comment">// 这个回调函数就是我们实际进行状态更改的地方</span>
     <span class="token function">increment</span><span class="token punctuation">(</span><span class="token parameter">state</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -250,15 +250,15 @@ store<span class="token punctuation">.</span><span class="token function">commit
 </code></pre></div><p>也就是说，在 Vuex 中状态的变更只能通过提交 Mutation 来更新状态，而提交 Mutation 也只能通过 commit 对应的的事件 type 来进行。在 Vuex 中，Mutation 都是同步函数，如果是异步的话，我们的状态变更就不实时，这会影响后续其他地方获取状态的实时性。那如果我们需要异步操作，例如从后台接口拉取的数据更新，这种情况下我们可以使用 Action。</p> <h4 id="action"><a href="#action" class="header-anchor">#</a> Action</h4> <p>相比与 Mutation，Action 的不同之处在于：<br>
 (1) Action 提交的是 Mutation，而不是直接变更状态。<br>
 (2) Action 可以包含任意异步操作。</p> <p>我们来看一下 Action 的使用：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> store <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vuex<span class="token punctuation">.</span>Store</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  state<span class="token operator">:</span> <span class="token punctuation">{</span>
-    count<span class="token operator">:</span> <span class="token number">0</span>
+  <span class="token literal-property property">state</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">count</span><span class="token operator">:</span> <span class="token number">0</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  mutations<span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">mutations</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token function">increment</span><span class="token punctuation">(</span><span class="token parameter">state</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       state<span class="token punctuation">.</span>count<span class="token operator">++</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  actions<span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">actions</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token comment">// Action 函数接受一个与 store 实例具有相同方法和属性的 context 对象</span>
     <span class="token function">increment</span><span class="token punctuation">(</span><span class="token parameter">context</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token comment">// 因此可以调用 context.commit 提交一个 mutation</span>
@@ -275,11 +275,11 @@ store<span class="token punctuation">.</span><span class="token function">commit
 Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>Vuex<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> dialogStore <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vuex<span class="token punctuation">.</span>Store</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  state<span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">state</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token comment">// 弹窗列表，用来保存可能弹窗的一系列弹窗</span>
-    dialogList<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token literal-property property">dialogList</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  mutations<span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">mutations</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token function">removeDialog</span><span class="token punctuation">(</span><span class="token parameter">state<span class="token punctuation">,</span> index</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token comment">// 移除弹窗</span>
       state<span class="token punctuation">.</span>dialogList<span class="token punctuation">.</span><span class="token function">splice</span><span class="token punctuation">(</span>index<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -345,8 +345,8 @@ Vue<span class="token punctuation">.</span><span class="token function">use</spa
   <span class="token keyword">import</span> dialogStore <span class="token keyword">from</span> <span class="token string">&quot;./components/ConfirmDialog/dialogStore&quot;</span><span class="token punctuation">;</span>
 
   <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
-    name<span class="token operator">:</span> <span class="token string">&quot;app&quot;</span><span class="token punctuation">,</span>
-    computed<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">&quot;app&quot;</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">computed</span><span class="token operator">:</span> <span class="token punctuation">{</span>
       <span class="token function">dialogList</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token comment">// 绑定 dialogStore 的 dialogList 列表</span>
         <span class="token keyword">return</span> dialogStore<span class="token punctuation">.</span>state<span class="token punctuation">.</span>dialogList<span class="token punctuation">;</span>
@@ -396,18 +396,18 @@ Vue<span class="token punctuation">.</span><span class="token function">use</spa
   <span class="token keyword">import</span> dialogStore <span class="token keyword">from</span> <span class="token string">&quot;./dialogStore&quot;</span><span class="token punctuation">;</span>
 
   <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
-    props<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">props</span><span class="token operator">:</span> <span class="token punctuation">{</span>
       <span class="token comment">// 弹窗相关信息</span>
-      dialogInfo<span class="token operator">:</span> <span class="token punctuation">{</span>
-        type<span class="token operator">:</span> Object<span class="token punctuation">,</span>
+      <span class="token literal-property property">dialogInfo</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">type</span><span class="token operator">:</span> Object<span class="token punctuation">,</span>
         <span class="token function-variable function">default</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
       <span class="token comment">// 弹窗的序号，移除的时候需要</span>
-      index<span class="token operator">:</span> <span class="token punctuation">{</span>
-        type<span class="token operator">:</span> Number
+      <span class="token literal-property property">index</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">type</span><span class="token operator">:</span> Number
       <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">methods</span><span class="token operator">:</span> <span class="token punctuation">{</span>
       <span class="token comment">// 点击取消</span>
       <span class="token function">cancel</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token comment">// 要先判断下 reject 方法在不在</span>
@@ -433,13 +433,13 @@ Vue<span class="token punctuation">.</span><span class="token function">use</spa
 </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
 </code></pre></div><p><strong>(5) 弹窗确认。</strong></p> <p>最后，我们就可以使用<code>confirmDialog</code>方法来进行弹窗确认：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 传入弹窗的内容，并通过 then 和 catch 来获取用户的操作，以便继续后续的逻辑处理</span>
 <span class="token function">confirmDialog</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  text<span class="token operator">:</span> <span class="token string">&quot;确认要删除吗？&quot;</span>
+  <span class="token literal-property property">text</span><span class="token operator">:</span> <span class="token string">&quot;确认要删除吗？&quot;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">res</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
     <span class="token comment">// 用户点击确认</span>
     <span class="token comment">// 二次弹窗确认</span>
     <span class="token function">confirmDialog</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-      text<span class="token operator">:</span> <span class="token string">&quot;真的确认要删除吗？&quot;</span>
+      <span class="token literal-property property">text</span><span class="token operator">:</span> <span class="token string">&quot;真的确认要删除吗？&quot;</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
       <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">res</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
         <span class="token comment">// 用户点击确认</span>
@@ -459,7 +459,7 @@ Vue<span class="token punctuation">.</span><span class="token function">use</spa
           第12章 实战：三天开发一个管理端
         </a>
         →
-      </span></p></div>  <div class="gitalk-container theme-default-content"><div id="gitalk-container" class="content"></div></div></main> <div id="kitty-container"><span><div role="tooltip" id="el-popover-6503" aria-hidden="true" class="el-popover el-popper" style="width:undefinedpx;display:none;"><!----><img src="https://github-imglib-1255459943.cos.ap-chengdu.myqcloud.com/2code2.jpg" class="image"> <div class="text">牡羊猪的猫粮罐</div> </div><span class="el-popover__reference-wrapper"><div id="kitty" style="background:url(https://github-imglib-1255459943.cos.ap-chengdu.myqcloud.com/assets/img/kitty1.svg);"></div></span></span> <div class="el-dialog__wrapper" style="display:none;"><div role="dialog" aria-modal="true" aria-label="牡羊猪是这样渐渐胖成猪的喵（点击图片可以切换噢）" class="el-dialog" style="margin-top:15vh;"><div class="el-dialog__header"><span class="el-dialog__title">牡羊猪是这样渐渐胖成猪的喵（点击图片可以切换噢）</span><button type="button" aria-label="Close" class="el-dialog__headerbtn"><i class="el-dialog__close el-icon el-icon-close"></i></button></div><!----><!----></div></div></div></div><div class="global-ui"></div></div>
-    <script src="/vue-ebook/assets/js/app.4a56433d.js" defer></script><script src="/vue-ebook/assets/js/2.a5c7c816.js" defer></script><script src="/vue-ebook/assets/js/3.a4a7a326.js" defer></script><script src="/vue-ebook/assets/js/10.778c6ead.js" defer></script>
+      </span></p></div>  <div class="gitalk-container theme-default-content"><div id="gitalk-container" class="content"></div></div></main> <div id="kitty-container"><span><div role="tooltip" id="el-popover-3912" aria-hidden="true" class="el-popover el-popper" style="width:undefinedpx;display:none;"><!----><img src="https://github-imglib-1255459943.cos.ap-chengdu.myqcloud.com/2code2.jpg" class="image"> <div class="text">牡羊猪的猫粮罐</div> </div><span class="el-popover__reference-wrapper"><div id="kitty" style="background:url(https://github-imglib-1255459943.cos.ap-chengdu.myqcloud.com/assets/img/kitty2.svg);"></div></span></span> <div class="el-dialog__wrapper" style="display:none;"><div role="dialog" aria-modal="true" aria-label="牡羊猪是这样渐渐胖成猪的喵（点击图片可以切换噢）" class="el-dialog" style="margin-top:15vh;"><div class="el-dialog__header"><span class="el-dialog__title">牡羊猪是这样渐渐胖成猪的喵（点击图片可以切换噢）</span><button type="button" aria-label="Close" class="el-dialog__headerbtn"><i class="el-dialog__close el-icon el-icon-close"></i></button></div><!----><!----></div></div></div></div><div class="global-ui"></div></div>
+    <script src="/vue-ebook/assets/js/app.d42cfe3d.js" defer></script><script src="/vue-ebook/assets/js/2.2a4d101b.js" defer></script><script src="/vue-ebook/assets/js/3.9083e877.js" defer></script><script src="/vue-ebook/assets/js/10.adca14b7.js" defer></script>
   </body>
 </html>

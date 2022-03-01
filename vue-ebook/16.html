@@ -4,11 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>第16章 关于 Vue 3.0 | 深入理解Vue.js实战</title>
-    <meta name="generator" content="VuePress 1.8.2">
+    <meta name="generator" content="VuePress 1.9.7">
     
     <meta name="description" content="作者：被删">
     
-    <link rel="preload" href="/vue-ebook/assets/css/0.styles.2728a2da.css" as="style"><link rel="preload" href="/vue-ebook/assets/js/app.4a56433d.js" as="script"><link rel="preload" href="/vue-ebook/assets/js/2.a5c7c816.js" as="script"><link rel="preload" href="/vue-ebook/assets/js/3.a4a7a326.js" as="script"><link rel="preload" href="/vue-ebook/assets/js/15.2f90a38d.js" as="script">
+    <link rel="preload" href="/vue-ebook/assets/css/0.styles.2728a2da.css" as="style"><link rel="preload" href="/vue-ebook/assets/js/app.d42cfe3d.js" as="script"><link rel="preload" href="/vue-ebook/assets/js/2.2a4d101b.js" as="script"><link rel="preload" href="/vue-ebook/assets/js/3.9083e877.js" as="script"><link rel="preload" href="/vue-ebook/assets/js/15.e8ce977a.js" as="script">
     <link rel="stylesheet" href="/vue-ebook/assets/css/0.styles.2728a2da.css">
   </head>
   <body>
@@ -53,8 +53,8 @@
 <span class="token comment">// 我们将其命名为“baseCompile”，以便更高级别的编译器（例如 @vue/compiler-dom）</span>
 <span class="token comment">// 可以在重新导出其他所有内容的同时导出“compile”</span>
 <span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">baseCompile</span><span class="token punctuation">(</span>
-  <span class="token parameter">template<span class="token operator">:</span> string <span class="token operator">|</span> RootNode<span class="token punctuation">,</span>
-  options<span class="token operator">:</span> CompilerOptions <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></span>
+  <span class="token parameter"><span class="token literal-property property">template</span><span class="token operator">:</span> string <span class="token operator">|</span> RootNode<span class="token punctuation">,</span>
+  <span class="token literal-property property">options</span><span class="token operator">:</span> CompilerOptions <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></span>
 <span class="token punctuation">)</span><span class="token operator">:</span> CodegenResult <span class="token punctuation">{</span>
   <span class="token comment">// 省略一部分</span>
 
@@ -69,7 +69,7 @@
   <span class="token function">transform</span><span class="token punctuation">(</span>ast<span class="token punctuation">,</span> <span class="token punctuation">{</span>
     <span class="token operator">...</span>options<span class="token punctuation">,</span>
     prefixIdentifiers<span class="token punctuation">,</span>
-    nodeTransforms<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token literal-property property">nodeTransforms</span><span class="token operator">:</span> <span class="token punctuation">[</span>
       transformIf<span class="token punctuation">,</span>
       transformFor<span class="token punctuation">,</span>
       <span class="token operator">...</span><span class="token punctuation">(</span>prefixIdentifiers
@@ -87,11 +87,11 @@
       <span class="token comment">// 例如 compiler-dom 中新增了对 DOM 的一些处理</span>
       <span class="token operator">...</span><span class="token punctuation">(</span>options<span class="token punctuation">.</span>nodeTransforms <span class="token operator">||</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
     <span class="token punctuation">]</span><span class="token punctuation">,</span>
-    directiveTransforms<span class="token operator">:</span> <span class="token punctuation">{</span>
-      on<span class="token operator">:</span> transformOn<span class="token punctuation">,</span>
-      bind<span class="token operator">:</span> transformBind<span class="token punctuation">,</span>
-      once<span class="token operator">:</span> transformOnce<span class="token punctuation">,</span>
-      model<span class="token operator">:</span> transformModel<span class="token punctuation">,</span>
+    <span class="token literal-property property">directiveTransforms</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">on</span><span class="token operator">:</span> transformOn<span class="token punctuation">,</span>
+      <span class="token literal-property property">bind</span><span class="token operator">:</span> transformBind<span class="token punctuation">,</span>
+      <span class="token literal-property property">once</span><span class="token operator">:</span> transformOnce<span class="token punctuation">,</span>
+      <span class="token literal-property property">model</span><span class="token operator">:</span> transformModel<span class="token punctuation">,</span>
       <span class="token comment">// 开放给使用者添加的一些处理逻辑</span>
       <span class="token operator">...</span><span class="token punctuation">(</span>options<span class="token punctuation">.</span>directiveTransforms <span class="token operator">||</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
@@ -121,27 +121,27 @@
 
 <span class="token comment">// 导出补充了DOM相关的“compile”模块</span>
 <span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">compile</span><span class="token punctuation">(</span>
-  <span class="token parameter">template<span class="token operator">:</span> string<span class="token punctuation">,</span>
-  options<span class="token operator">:</span> CompilerOptions <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></span>
+  <span class="token parameter"><span class="token literal-property property">template</span><span class="token operator">:</span> string<span class="token punctuation">,</span>
+  <span class="token literal-property property">options</span><span class="token operator">:</span> CompilerOptions <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></span>
 <span class="token punctuation">)</span><span class="token operator">:</span> CodegenResult <span class="token punctuation">{</span>
   <span class="token comment">// 基于 @vue/compiler-core 中的 baseCompile 进行补充拓展</span>
   <span class="token comment">// 从而导出一个完整的 Vue 3.0 版本的编译器</span>
   <span class="token keyword">return</span> <span class="token function">baseCompile</span><span class="token punctuation">(</span>template<span class="token punctuation">,</span> <span class="token punctuation">{</span>
     <span class="token operator">...</span>options<span class="token punctuation">,</span>
     <span class="token operator">...</span><span class="token punctuation">(</span>__BROWSER__ <span class="token operator">?</span> parserOptionsMinimal <span class="token operator">:</span> parserOptionsStandard<span class="token punctuation">)</span><span class="token punctuation">,</span>
-    nodeTransforms<span class="token operator">:</span> <span class="token punctuation">[</span>transformStyle<span class="token punctuation">,</span> <span class="token operator">...</span><span class="token punctuation">(</span>options<span class="token punctuation">.</span>nodeTransforms <span class="token operator">||</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-    directiveTransforms<span class="token operator">:</span> <span class="token punctuation">{</span>
-      cloak<span class="token operator">:</span> transformCloak<span class="token punctuation">,</span>
-      html<span class="token operator">:</span> transformVHtml<span class="token punctuation">,</span>
-      text<span class="token operator">:</span> transformVText<span class="token punctuation">,</span>
-      model<span class="token operator">:</span> transformModel<span class="token punctuation">,</span> <span class="token comment">// 此处重写了 compiler-core 的 vModel 转换</span>
+    <span class="token literal-property property">nodeTransforms</span><span class="token operator">:</span> <span class="token punctuation">[</span>transformStyle<span class="token punctuation">,</span> <span class="token operator">...</span><span class="token punctuation">(</span>options<span class="token punctuation">.</span>nodeTransforms <span class="token operator">||</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">directiveTransforms</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">cloak</span><span class="token operator">:</span> transformCloak<span class="token punctuation">,</span>
+      <span class="token literal-property property">html</span><span class="token operator">:</span> transformVHtml<span class="token punctuation">,</span>
+      <span class="token literal-property property">text</span><span class="token operator">:</span> transformVText<span class="token punctuation">,</span>
+      <span class="token literal-property property">model</span><span class="token operator">:</span> transformModel<span class="token punctuation">,</span> <span class="token comment">// 此处重写了 compiler-core 的 vModel 转换</span>
       <span class="token operator">...</span><span class="token punctuation">(</span>options<span class="token punctuation">.</span>directiveTransforms <span class="token operator">||</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 <span class="token keyword">export</span> <span class="token operator">*</span> <span class="token keyword">from</span> <span class="token string">&quot;@vue/compiler-core&quot;</span><span class="token punctuation">;</span>
 </code></pre></div><p>显然，compiler-dom 模块是基于 compiler-core 模块补齐 DOM 相关能力，我们可以理解为运行在浏览器中需要的一些能力补齐。这里我们能看到，complier-dom 中重写了 compiler-core 的 vModel 转换，因为在 Vue 中<code>v-model</code>只能用在表单或是自定义表单的组件，我们来看一下实现：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// @vue/compiler-dom/src/transforms/vModel.ts</span>
-<span class="token keyword">export</span> <span class="token keyword">const</span> transformModel<span class="token operator">:</span> <span class="token function-variable function">DirectiveTransform</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">dir<span class="token punctuation">,</span> node<span class="token punctuation">,</span> context</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token literal-property property">transformModel</span><span class="token operator">:</span> <span class="token function-variable function">DirectiveTransform</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">dir<span class="token punctuation">,</span> node<span class="token punctuation">,</span> context</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> res <span class="token operator">=</span> <span class="token function">baseTransform</span><span class="token punctuation">(</span>dir<span class="token punctuation">,</span> node<span class="token punctuation">,</span> context<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">const</span> <span class="token punctuation">{</span> tag<span class="token punctuation">,</span> tagType <span class="token punctuation">}</span> <span class="token operator">=</span> node<span class="token punctuation">;</span>
   <span class="token keyword">if</span> <span class="token punctuation">(</span>tagType <span class="token operator">===</span> ElementTypes<span class="token punctuation">.</span><span class="token constant">ELEMENT</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -181,11 +181,11 @@
 </code></pre></div><p>其实在 Vue 中，除了原生表单组件 input、textarea、select 这些，还有一些自定义组件也需要进行处理的，这里也需要补齐对自定义组件的处理，这部分我们会在 runtime-dom 运行时 DOM 补充的部分能看到。</p> <h4 id="vue-reactivity"><a href="#vue-reactivity" class="header-anchor">#</a> @vue/reactivity</h4> <p>该模块实现了一个数据管理模块，它可以单独使用，也可以与框架配合使用。我们能看到 Vue 3.0 的数据监控的优化亮点都包含在这个模块了，这个模块主要包括了：</p> <ul><li>baseHandlers/collectionHandlers: 处理器，用作 Proxy 的处理器</li> <li>computed: 计算属性部分</li> <li>effect: 一些辅助能力，例如跟踪依赖项、触发一些检测、响应等等</li> <li>reactive: 响应式数据，基于 Proxy 代理实现</li> <li>ref: 数据容器，在 Vue 中是指向组件实例的引用</li></ul> <p>我们可以看看创建响应式数据的部分：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// @vue/reactivity/src/reactive.ts</span>
 <span class="token comment">// 创建响应式数据</span>
 <span class="token keyword">function</span> <span class="token function">createReactiveObject</span><span class="token punctuation">(</span>
-  <span class="token parameter">target<span class="token operator">:</span> any<span class="token punctuation">,</span>
-  toProxy<span class="token operator">:</span> WeakMap<span class="token operator">&lt;</span>any<span class="token punctuation">,</span> any<span class="token operator">&gt;</span><span class="token punctuation">,</span>
-  toRaw<span class="token operator">:</span> WeakMap<span class="token operator">&lt;</span>any<span class="token punctuation">,</span> any<span class="token operator">&gt;</span><span class="token punctuation">,</span>
-  baseHandlers<span class="token operator">:</span> ProxyHandler<span class="token operator">&lt;</span>any<span class="token operator">&gt;</span><span class="token punctuation">,</span>
-  collectionHandlers<span class="token operator">:</span> ProxyHandler<span class="token operator">&lt;</span>any<span class="token operator">&gt;</span></span>
+  <span class="token parameter"><span class="token literal-property property">target</span><span class="token operator">:</span> any<span class="token punctuation">,</span>
+  <span class="token literal-property property">toProxy</span><span class="token operator">:</span> WeakMap<span class="token operator">&lt;</span>any<span class="token punctuation">,</span> any<span class="token operator">&gt;</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">toRaw</span><span class="token operator">:</span> WeakMap<span class="token operator">&lt;</span>any<span class="token punctuation">,</span> any<span class="token operator">&gt;</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">baseHandlers</span><span class="token operator">:</span> ProxyHandler<span class="token operator">&lt;</span>any<span class="token operator">&gt;</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">collectionHandlers</span><span class="token operator">:</span> ProxyHandler<span class="token operator">&lt;</span>any<span class="token operator">&gt;</span></span>
 <span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">isObject</span><span class="token punctuation">(</span>target<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>__DEV__<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -223,10 +223,10 @@
 </code></pre></div><p>我们已经可以看到，通过 Proxy 的方式创建一个响应式数据，并将数据之间的依赖关系、源数据与代理对象之间的关系都记录下来，当我们更新数据的时候，就可以根据依赖进行范围内的检查更新：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// @vue/reactivity/src/baseHandlers.ts</span>
 <span class="token comment">// 这是响应式数据 set 的时候代理处理函数</span>
 <span class="token keyword">function</span> <span class="token function">set</span><span class="token punctuation">(</span>
-  <span class="token parameter">target<span class="token operator">:</span> any<span class="token punctuation">,</span>
-  key<span class="token operator">:</span> string <span class="token operator">|</span> symbol<span class="token punctuation">,</span>
-  value<span class="token operator">:</span> any<span class="token punctuation">,</span>
-  receiver<span class="token operator">:</span> any</span>
+  <span class="token parameter"><span class="token literal-property property">target</span><span class="token operator">:</span> any<span class="token punctuation">,</span>
+  <span class="token literal-property property">key</span><span class="token operator">:</span> string <span class="token operator">|</span> symbol<span class="token punctuation">,</span>
+  <span class="token literal-property property">value</span><span class="token operator">:</span> any<span class="token punctuation">,</span>
+  <span class="token literal-property property">receiver</span><span class="token operator">:</span> any</span>
 <span class="token punctuation">)</span><span class="token operator">:</span> boolean <span class="token punctuation">{</span>
   <span class="token comment">// 获取代理对象数据</span>
   value <span class="token operator">=</span> <span class="token function">toRaw</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -246,7 +246,7 @@
     <span class="token comment">// 计算数据变更方式（更新或新增），并进行变更触发</span>
     <span class="token comment">// trigger 会根据依赖关系，对 computed 和需要连带更新的数据进行更新</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>__DEV__<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">const</span> extraInfo <span class="token operator">=</span> <span class="token punctuation">{</span> oldValue<span class="token punctuation">,</span> newValue<span class="token operator">:</span> value <span class="token punctuation">}</span><span class="token punctuation">;</span>
+      <span class="token keyword">const</span> extraInfo <span class="token operator">=</span> <span class="token punctuation">{</span> oldValue<span class="token punctuation">,</span> <span class="token literal-property property">newValue</span><span class="token operator">:</span> value <span class="token punctuation">}</span><span class="token punctuation">;</span>
       <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>hadKey<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token function">trigger</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> OperationTypes<span class="token punctuation">.</span><span class="token constant">ADD</span><span class="token punctuation">,</span> key<span class="token punctuation">,</span> extraInfo<span class="token punctuation">)</span><span class="token punctuation">;</span>
       <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>value <span class="token operator">!==</span> oldValue<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -320,7 +320,7 @@
 <span class="token keyword">const</span> doc <span class="token operator">=</span> document<span class="token punctuation">;</span>
 
 <span class="token keyword">export</span> <span class="token keyword">const</span> nodeOps <span class="token operator">=</span> <span class="token punctuation">{</span>
-  <span class="token function-variable function">insert</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter">child<span class="token operator">:</span> Node<span class="token punctuation">,</span> parent<span class="token operator">:</span> Node<span class="token punctuation">,</span> anchor<span class="token operator">?</span><span class="token operator">:</span> Node</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token function-variable function">insert</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">child</span><span class="token operator">:</span> Node<span class="token punctuation">,</span> <span class="token literal-property property">parent</span><span class="token operator">:</span> Node<span class="token punctuation">,</span> anchor<span class="token operator">?</span><span class="token operator">:</span> Node</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>anchor <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       parent<span class="token punctuation">.</span><span class="token function">insertBefore</span><span class="token punctuation">(</span>child<span class="token punctuation">,</span> anchor<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
@@ -328,17 +328,17 @@
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
-  <span class="token function-variable function">remove</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter">child<span class="token operator">:</span> Node</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token function-variable function">remove</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">child</span><span class="token operator">:</span> Node</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
     <span class="token keyword">const</span> parent <span class="token operator">=</span> child<span class="token punctuation">.</span>parentNode<span class="token punctuation">;</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>parent <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       parent<span class="token punctuation">.</span><span class="token function">removeChild</span><span class="token punctuation">(</span>child<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
-  createElement<span class="token operator">:</span> <span class="token punctuation">(</span>tag<span class="token operator">:</span> string<span class="token punctuation">,</span> isSVG<span class="token operator">?</span><span class="token operator">:</span> boolean<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token parameter">Element</span> <span class="token operator">=&gt;</span>
+  <span class="token literal-property property">createElement</span><span class="token operator">:</span> <span class="token punctuation">(</span>tag<span class="token operator">:</span> string<span class="token punctuation">,</span> isSVG<span class="token operator">?</span><span class="token operator">:</span> boolean<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token parameter">Element</span> <span class="token operator">=&gt;</span>
     isSVG <span class="token operator">?</span> doc<span class="token punctuation">.</span><span class="token function">createElementNS</span><span class="token punctuation">(</span>svgNS<span class="token punctuation">,</span> tag<span class="token punctuation">)</span> <span class="token operator">:</span> doc<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span>tag<span class="token punctuation">)</span><span class="token punctuation">,</span>
 
-  querySelector<span class="token operator">:</span> <span class="token punctuation">(</span>selector<span class="token operator">:</span> string<span class="token punctuation">)</span><span class="token operator">:</span> Element <span class="token operator">|</span> <span class="token parameter"><span class="token keyword">null</span></span> <span class="token operator">=&gt;</span>
+  <span class="token literal-property property">querySelector</span><span class="token operator">:</span> <span class="token punctuation">(</span>selector<span class="token operator">:</span> string<span class="token punctuation">)</span><span class="token operator">:</span> Element <span class="token operator">|</span> <span class="token parameter"><span class="token keyword">null</span></span> <span class="token operator">=&gt;</span>
     doc<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span>selector<span class="token punctuation">)</span>
 
   <span class="token comment">// 篇幅原因，省略一部分内容</span>
@@ -362,7 +362,7 @@
           关于框架选型
         </a>
         →
-      </span></p></div>  <div class="gitalk-container theme-default-content"><div id="gitalk-container" class="content"></div></div></main> <div id="kitty-container"><span><div role="tooltip" id="el-popover-8271" aria-hidden="true" class="el-popover el-popper" style="width:undefinedpx;display:none;"><!----><img src="https://github-imglib-1255459943.cos.ap-chengdu.myqcloud.com/2code2.jpg" class="image"> <div class="text">牡羊猪的猫粮罐</div> </div><span class="el-popover__reference-wrapper"><div id="kitty" style="background:url(https://github-imglib-1255459943.cos.ap-chengdu.myqcloud.com/assets/img/kitty2.svg);"></div></span></span> <div class="el-dialog__wrapper" style="display:none;"><div role="dialog" aria-modal="true" aria-label="牡羊猪是这样渐渐胖成猪的喵（点击图片可以切换噢）" class="el-dialog" style="margin-top:15vh;"><div class="el-dialog__header"><span class="el-dialog__title">牡羊猪是这样渐渐胖成猪的喵（点击图片可以切换噢）</span><button type="button" aria-label="Close" class="el-dialog__headerbtn"><i class="el-dialog__close el-icon el-icon-close"></i></button></div><!----><!----></div></div></div></div><div class="global-ui"></div></div>
-    <script src="/vue-ebook/assets/js/app.4a56433d.js" defer></script><script src="/vue-ebook/assets/js/2.a5c7c816.js" defer></script><script src="/vue-ebook/assets/js/3.a4a7a326.js" defer></script><script src="/vue-ebook/assets/js/15.2f90a38d.js" defer></script>
+      </span></p></div>  <div class="gitalk-container theme-default-content"><div id="gitalk-container" class="content"></div></div></main> <div id="kitty-container"><span><div role="tooltip" id="el-popover-3707" aria-hidden="true" class="el-popover el-popper" style="width:undefinedpx;display:none;"><!----><img src="https://github-imglib-1255459943.cos.ap-chengdu.myqcloud.com/2code2.jpg" class="image"> <div class="text">牡羊猪的猫粮罐</div> </div><span class="el-popover__reference-wrapper"><div id="kitty" style="background:url(https://github-imglib-1255459943.cos.ap-chengdu.myqcloud.com/assets/img/kitty1.svg);"></div></span></span> <div class="el-dialog__wrapper" style="display:none;"><div role="dialog" aria-modal="true" aria-label="牡羊猪是这样渐渐胖成猪的喵（点击图片可以切换噢）" class="el-dialog" style="margin-top:15vh;"><div class="el-dialog__header"><span class="el-dialog__title">牡羊猪是这样渐渐胖成猪的喵（点击图片可以切换噢）</span><button type="button" aria-label="Close" class="el-dialog__headerbtn"><i class="el-dialog__close el-icon el-icon-close"></i></button></div><!----><!----></div></div></div></div><div class="global-ui"></div></div>
+    <script src="/vue-ebook/assets/js/app.d42cfe3d.js" defer></script><script src="/vue-ebook/assets/js/2.2a4d101b.js" defer></script><script src="/vue-ebook/assets/js/3.9083e877.js" defer></script><script src="/vue-ebook/assets/js/15.e8ce977a.js" defer></script>
   </body>
 </html>

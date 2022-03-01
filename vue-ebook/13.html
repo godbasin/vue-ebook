@@ -4,11 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>第13章 实战：表单配置化实现 | 深入理解Vue.js实战</title>
-    <meta name="generator" content="VuePress 1.8.2">
+    <meta name="generator" content="VuePress 1.9.7">
     
     <meta name="description" content="作者：被删">
     
-    <link rel="preload" href="/vue-ebook/assets/css/0.styles.2728a2da.css" as="style"><link rel="preload" href="/vue-ebook/assets/js/app.4a56433d.js" as="script"><link rel="preload" href="/vue-ebook/assets/js/2.a5c7c816.js" as="script"><link rel="preload" href="/vue-ebook/assets/js/3.a4a7a326.js" as="script"><link rel="preload" href="/vue-ebook/assets/js/12.cb7cf307.js" as="script">
+    <link rel="preload" href="/vue-ebook/assets/css/0.styles.2728a2da.css" as="style"><link rel="preload" href="/vue-ebook/assets/js/app.d42cfe3d.js" as="script"><link rel="preload" href="/vue-ebook/assets/js/2.2a4d101b.js" as="script"><link rel="preload" href="/vue-ebook/assets/js/3.9083e877.js" as="script"><link rel="preload" href="/vue-ebook/assets/js/12.73df520f.js" as="script">
     <link rel="stylesheet" href="/vue-ebook/assets/css/0.styles.2728a2da.css">
   </head>
   <body>
@@ -150,10 +150,10 @@
   <span class="token comment">// 下面是 Vue 组件</span>
   <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
     <span class="token comment">// 传入选项</span>
-    props<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">props</span><span class="token operator">:</span> <span class="token punctuation">{</span>
       <span class="token comment">// 表单组件信息</span>
-      formComponentList<span class="token operator">:</span> <span class="token punctuation">{</span>
-        type<span class="token operator">:</span> Array<span class="token punctuation">,</span>
+      <span class="token literal-property property">formComponentList</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">type</span><span class="token operator">:</span> Array<span class="token punctuation">,</span>
         <span class="token function-variable function">default</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
       <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
@@ -181,65 +181,65 @@
   <span class="token keyword">import</span> DynamicForm <span class="token keyword">from</span> <span class="token string">&quot;./components/DynamicForm.vue&quot;</span><span class="token punctuation">;</span>
 
   <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
-    name<span class="token operator">:</span> <span class="token string">&quot;app&quot;</span><span class="token punctuation">,</span>
-    components<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">&quot;app&quot;</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">components</span><span class="token operator">:</span> <span class="token punctuation">{</span>
       <span class="token comment">// 使用动态表单组件</span>
       DynamicForm
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token keyword">return</span> <span class="token punctuation">{</span>
         <span class="token comment">// 配置表单相关的属性和数据</span>
-        formComponentList<span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token literal-property property">formComponentList</span><span class="token operator">:</span> <span class="token punctuation">[</span>
           <span class="token punctuation">{</span>
-            componentName<span class="token operator">:</span> <span class="token string">&quot;el-input&quot;</span><span class="token punctuation">,</span>
-            formLabel<span class="token operator">:</span> <span class="token string">&quot;活动名称&quot;</span>
+            <span class="token literal-property property">componentName</span><span class="token operator">:</span> <span class="token string">&quot;el-input&quot;</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">formLabel</span><span class="token operator">:</span> <span class="token string">&quot;活动名称&quot;</span>
           <span class="token punctuation">}</span><span class="token punctuation">,</span>
           <span class="token punctuation">{</span>
-            componentName<span class="token operator">:</span> <span class="token string">&quot;el-select&quot;</span><span class="token punctuation">,</span>
-            formLabel<span class="token operator">:</span> <span class="token string">&quot;活动区域&quot;</span><span class="token punctuation">,</span>
-            options<span class="token operator">:</span> <span class="token punctuation">[</span>
-              <span class="token punctuation">{</span> label<span class="token operator">:</span> <span class="token string">&quot;区域一&quot;</span><span class="token punctuation">,</span> value<span class="token operator">:</span> <span class="token string">&quot;shanghai&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
-              <span class="token punctuation">{</span> label<span class="token operator">:</span> <span class="token string">&quot;区域二&quot;</span><span class="token punctuation">,</span> value<span class="token operator">:</span> <span class="token string">&quot;beijing&quot;</span> <span class="token punctuation">}</span>
+            <span class="token literal-property property">componentName</span><span class="token operator">:</span> <span class="token string">&quot;el-select&quot;</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">formLabel</span><span class="token operator">:</span> <span class="token string">&quot;活动区域&quot;</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">options</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+              <span class="token punctuation">{</span> <span class="token literal-property property">label</span><span class="token operator">:</span> <span class="token string">&quot;区域一&quot;</span><span class="token punctuation">,</span> <span class="token literal-property property">value</span><span class="token operator">:</span> <span class="token string">&quot;shanghai&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+              <span class="token punctuation">{</span> <span class="token literal-property property">label</span><span class="token operator">:</span> <span class="token string">&quot;区域二&quot;</span><span class="token punctuation">,</span> <span class="token literal-property property">value</span><span class="token operator">:</span> <span class="token string">&quot;beijing&quot;</span> <span class="token punctuation">}</span>
             <span class="token punctuation">]</span><span class="token punctuation">,</span>
-            placeholder<span class="token operator">:</span> <span class="token string">&quot;请选择活动区域&quot;</span>
+            <span class="token literal-property property">placeholder</span><span class="token operator">:</span> <span class="token string">&quot;请选择活动区域&quot;</span>
           <span class="token punctuation">}</span><span class="token punctuation">,</span>
           <span class="token punctuation">{</span>
-            componentName<span class="token operator">:</span> <span class="token string">&quot;el-date-picker&quot;</span><span class="token punctuation">,</span>
-            formLabel<span class="token operator">:</span> <span class="token string">&quot;活动时间&quot;</span><span class="token punctuation">,</span>
-            type<span class="token operator">:</span> <span class="token string">&quot;date&quot;</span><span class="token punctuation">,</span>
-            valueFormat<span class="token operator">:</span> <span class="token string">&quot;yyyy-MM-dd&quot;</span><span class="token punctuation">,</span>
-            placeholder<span class="token operator">:</span> <span class="token string">&quot;选择日期&quot;</span>
+            <span class="token literal-property property">componentName</span><span class="token operator">:</span> <span class="token string">&quot;el-date-picker&quot;</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">formLabel</span><span class="token operator">:</span> <span class="token string">&quot;活动时间&quot;</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">&quot;date&quot;</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">valueFormat</span><span class="token operator">:</span> <span class="token string">&quot;yyyy-MM-dd&quot;</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">placeholder</span><span class="token operator">:</span> <span class="token string">&quot;选择日期&quot;</span>
           <span class="token punctuation">}</span><span class="token punctuation">,</span>
           <span class="token punctuation">{</span>
-            componentName<span class="token operator">:</span> <span class="token string">&quot;el-time-picker&quot;</span><span class="token punctuation">,</span>
-            valueFormat<span class="token operator">:</span> <span class="token string">&quot;HH:mm:ss&quot;</span><span class="token punctuation">,</span>
-            placeholder<span class="token operator">:</span> <span class="token string">&quot;选择时间&quot;</span>
+            <span class="token literal-property property">componentName</span><span class="token operator">:</span> <span class="token string">&quot;el-time-picker&quot;</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">valueFormat</span><span class="token operator">:</span> <span class="token string">&quot;HH:mm:ss&quot;</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">placeholder</span><span class="token operator">:</span> <span class="token string">&quot;选择时间&quot;</span>
           <span class="token punctuation">}</span><span class="token punctuation">,</span>
           <span class="token punctuation">{</span>
-            componentName<span class="token operator">:</span> <span class="token string">&quot;el-switch&quot;</span><span class="token punctuation">,</span>
-            formLabel<span class="token operator">:</span> <span class="token string">&quot;即时配送&quot;</span>
+            <span class="token literal-property property">componentName</span><span class="token operator">:</span> <span class="token string">&quot;el-switch&quot;</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">formLabel</span><span class="token operator">:</span> <span class="token string">&quot;即时配送&quot;</span>
           <span class="token punctuation">}</span><span class="token punctuation">,</span>
           <span class="token punctuation">{</span>
-            componentName<span class="token operator">:</span> <span class="token string">&quot;el-checkbox-group&quot;</span><span class="token punctuation">,</span>
-            formLabel<span class="token operator">:</span> <span class="token string">&quot;活动性质&quot;</span><span class="token punctuation">,</span>
-            options<span class="token operator">:</span> <span class="token punctuation">[</span>
-              <span class="token punctuation">{</span> label<span class="token operator">:</span> <span class="token string">&quot;美食/餐厅线上活动&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
-              <span class="token punctuation">{</span> label<span class="token operator">:</span> <span class="token string">&quot;地推活动&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
-              <span class="token punctuation">{</span> label<span class="token operator">:</span> <span class="token string">&quot;线下主题活动&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
-              <span class="token punctuation">{</span> label<span class="token operator">:</span> <span class="token string">&quot;单纯品牌曝光&quot;</span> <span class="token punctuation">}</span>
+            <span class="token literal-property property">componentName</span><span class="token operator">:</span> <span class="token string">&quot;el-checkbox-group&quot;</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">formLabel</span><span class="token operator">:</span> <span class="token string">&quot;活动性质&quot;</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">options</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+              <span class="token punctuation">{</span> <span class="token literal-property property">label</span><span class="token operator">:</span> <span class="token string">&quot;美食/餐厅线上活动&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+              <span class="token punctuation">{</span> <span class="token literal-property property">label</span><span class="token operator">:</span> <span class="token string">&quot;地推活动&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+              <span class="token punctuation">{</span> <span class="token literal-property property">label</span><span class="token operator">:</span> <span class="token string">&quot;线下主题活动&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+              <span class="token punctuation">{</span> <span class="token literal-property property">label</span><span class="token operator">:</span> <span class="token string">&quot;单纯品牌曝光&quot;</span> <span class="token punctuation">}</span>
             <span class="token punctuation">]</span><span class="token punctuation">,</span>
-            value<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+            <span class="token literal-property property">value</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
           <span class="token punctuation">}</span><span class="token punctuation">,</span>
           <span class="token punctuation">{</span>
-            componentName<span class="token operator">:</span> <span class="token string">&quot;el-radio-group&quot;</span><span class="token punctuation">,</span>
-            formLabel<span class="token operator">:</span> <span class="token string">&quot;特殊资源&quot;</span><span class="token punctuation">,</span>
-            options<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span> label<span class="token operator">:</span> <span class="token string">&quot;线上品牌商赞助&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> label<span class="token operator">:</span> <span class="token string">&quot;线下场地免费&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-            type<span class="token operator">:</span> <span class="token string">&quot;textarea&quot;</span>
+            <span class="token literal-property property">componentName</span><span class="token operator">:</span> <span class="token string">&quot;el-radio-group&quot;</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">formLabel</span><span class="token operator">:</span> <span class="token string">&quot;特殊资源&quot;</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">options</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span> <span class="token literal-property property">label</span><span class="token operator">:</span> <span class="token string">&quot;线上品牌商赞助&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">label</span><span class="token operator">:</span> <span class="token string">&quot;线下场地免费&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">&quot;textarea&quot;</span>
           <span class="token punctuation">}</span>
         <span class="token punctuation">]</span>
       <span class="token punctuation">}</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">methods</span><span class="token operator">:</span> <span class="token punctuation">{</span>
       <span class="token function">onSubmit</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token comment">// 点击提交的时候，将值筛选出来</span>
         <span class="token keyword">const</span> formValueList <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>formComponentList<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">x</span> <span class="token operator">=&gt;</span> x<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -265,31 +265,31 @@
   <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
     <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token keyword">return</span> <span class="token punctuation">{</span>
-        editor<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token comment">// 保存 jsoneditor 实例</span>
-        innerValue<span class="token operator">:</span> <span class="token keyword">null</span> <span class="token comment">// 保存内部值，用于与外部值比较和更新</span>
+        <span class="token literal-property property">editor</span><span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token comment">// 保存 jsoneditor 实例</span>
+        <span class="token literal-property property">innerValue</span><span class="token operator">:</span> <span class="token keyword">null</span> <span class="token comment">// 保存内部值，用于与外部值比较和更新</span>
       <span class="token punctuation">}</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token comment">// 配置 v-model 的事件和绑定值，分别为 change 和 value</span>
-    model<span class="token operator">:</span> <span class="token punctuation">{</span>
-      event<span class="token operator">:</span> <span class="token string">&quot;change&quot;</span><span class="token punctuation">,</span>
-      prop<span class="token operator">:</span> <span class="token string">&quot;value&quot;</span>
+    <span class="token literal-property property">model</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">event</span><span class="token operator">:</span> <span class="token string">&quot;change&quot;</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">prop</span><span class="token operator">:</span> <span class="token string">&quot;value&quot;</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token comment">// 配置 Prop 属性</span>
-    props<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">props</span><span class="token operator">:</span> <span class="token punctuation">{</span>
       <span class="token comment">// 传入配置项，可用于更新配置</span>
-      options<span class="token operator">:</span> <span class="token punctuation">{</span>
-        type<span class="token operator">:</span> Object<span class="token punctuation">,</span>
+      <span class="token literal-property property">options</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">type</span><span class="token operator">:</span> Object<span class="token punctuation">,</span>
         <span class="token function-variable function">default</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
       <span class="token comment">// 是否只读状态，默认可编辑</span>
-      isReadonly<span class="token operator">:</span> <span class="token punctuation">{</span>
-        type<span class="token operator">:</span> Boolean<span class="token punctuation">,</span>
+      <span class="token literal-property property">isReadonly</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">type</span><span class="token operator">:</span> Boolean<span class="token punctuation">,</span>
         <span class="token keyword">default</span><span class="token operator">:</span> <span class="token boolean">false</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
       <span class="token comment">// 绑定 v-model 的值</span>
-      value<span class="token operator">:</span> <span class="token keyword">null</span>
+      <span class="token literal-property property">value</span><span class="token operator">:</span> <span class="token keyword">null</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    watch<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">watch</span><span class="token operator">:</span> <span class="token punctuation">{</span>
       <span class="token comment">// 监听 options 选项，用于更新</span>
       <span class="token function">options</span><span class="token punctuation">(</span><span class="token parameter">val</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setOption</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -307,11 +307,11 @@
       <span class="token comment">// 初始化选项，传入是否可编辑相关的一些配置</span>
       <span class="token keyword">let</span> options <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>isReadonly
         <span class="token operator">?</span> <span class="token punctuation">{</span>
-            mode<span class="token operator">:</span> <span class="token string">&quot;view&quot;</span>
+            <span class="token literal-property property">mode</span><span class="token operator">:</span> <span class="token string">&quot;view&quot;</span>
           <span class="token punctuation">}</span>
         <span class="token operator">:</span> <span class="token punctuation">{</span>
-            mode<span class="token operator">:</span> <span class="token string">&quot;code&quot;</span><span class="token punctuation">,</span>
-            modes<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;code&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;form&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;tree&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;view&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">mode</span><span class="token operator">:</span> <span class="token string">&quot;code&quot;</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">modes</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;code&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;form&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;tree&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;view&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
             <span class="token function-variable function">onChange</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
               <span class="token comment">// 编辑模式下，onChange 即编辑内容有变更</span>
               <span class="token keyword">try</span> <span class="token punctuation">{</span>
@@ -331,7 +331,7 @@
         <span class="token keyword">this</span><span class="token punctuation">.</span>editor<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
       <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">methods</span><span class="token operator">:</span> <span class="token punctuation">{</span>
       <span class="token function">setValue</span><span class="token punctuation">(</span><span class="token parameter">val</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token comment">// 更新内部值</span>
         <span class="token keyword">this</span><span class="token punctuation">.</span>innerValue <span class="token operator">=</span> val<span class="token punctuation">;</span>
@@ -381,8 +381,8 @@
   <span class="token keyword">import</span> JSONEditor <span class="token keyword">from</span> <span class="token string">&quot;./components/JSONEditor.vue&quot;</span><span class="token punctuation">;</span>
 
   <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
-    name<span class="token operator">:</span> <span class="token string">&quot;app&quot;</span><span class="token punctuation">,</span>
-    components<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">&quot;app&quot;</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">components</span><span class="token operator">:</span> <span class="token punctuation">{</span>
       <span class="token comment">// 使用组件</span>
       DynamicForm<span class="token punctuation">,</span>
       JSONEditor
@@ -390,7 +390,7 @@
     <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token keyword">return</span> <span class="token punctuation">{</span>
         <span class="token comment">// 配置表单相关的属性和数据</span>
-        formComponentList<span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token literal-property property">formComponentList</span><span class="token operator">:</span> <span class="token punctuation">[</span>
           <span class="token comment">// 这里参考上面一节内容，没有做任何变更，篇幅原因省略</span>
         <span class="token punctuation">]</span>
       <span class="token punctuation">}</span><span class="token punctuation">;</span>
@@ -400,13 +400,13 @@
       <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
         <span class="token keyword">this</span><span class="token punctuation">.</span>formComponentList <span class="token operator">=</span> <span class="token punctuation">[</span>
           <span class="token punctuation">{</span>
-            componentName<span class="token operator">:</span> <span class="token string">&quot;el-input&quot;</span><span class="token punctuation">,</span>
-            formLabel<span class="token operator">:</span> <span class="token string">&quot;活动名称&quot;</span>
+            <span class="token literal-property property">componentName</span><span class="token operator">:</span> <span class="token string">&quot;el-input&quot;</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">formLabel</span><span class="token operator">:</span> <span class="token string">&quot;活动名称&quot;</span>
           <span class="token punctuation">}</span>
         <span class="token punctuation">]</span><span class="token punctuation">;</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">3000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">methods</span><span class="token operator">:</span> <span class="token punctuation">{</span>
       <span class="token function">onSubmit</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token comment">// 点击提交的时候，将值筛选出来</span>
         <span class="token keyword">const</span> formValueList <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>formComponentList<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">x</span> <span class="token operator">=&gt;</span> x<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -461,32 +461,32 @@
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
   <span class="token comment">// 下面是 Vue 组件</span>
   <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
-    props<span class="token operator">:</span> <span class="token punctuation">{</span>
-      formComponentList<span class="token operator">:</span> <span class="token punctuation">{</span>
-        type<span class="token operator">:</span> Array<span class="token punctuation">,</span>
+    <span class="token literal-property property">props</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">formComponentList</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">type</span><span class="token operator">:</span> Array<span class="token punctuation">,</span>
         <span class="token function-variable function">default</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
       <span class="token comment">// 绑定 v-model 的值</span>
-      value<span class="token operator">:</span> <span class="token keyword">null</span>
+      <span class="token literal-property property">value</span><span class="token operator">:</span> <span class="token keyword">null</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token comment">// 配置 v-model 的事件和绑定值，分别为 change 和 value</span>
-    model<span class="token operator">:</span> <span class="token punctuation">{</span>
-      event<span class="token operator">:</span> <span class="token string">&quot;change&quot;</span><span class="token punctuation">,</span>
-      prop<span class="token operator">:</span> <span class="token string">&quot;value&quot;</span>
+    <span class="token literal-property property">model</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">event</span><span class="token operator">:</span> <span class="token string">&quot;change&quot;</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">prop</span><span class="token operator">:</span> <span class="token string">&quot;value&quot;</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token keyword">return</span> <span class="token punctuation">{</span>
         <span class="token comment">// 保存内部值，用于与外部值比较和更新</span>
-        formModel<span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+        <span class="token literal-property property">formModel</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
       <span class="token punctuation">}</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    watch<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">watch</span><span class="token operator">:</span> <span class="token punctuation">{</span>
       <span class="token function">value</span><span class="token punctuation">(</span><span class="token parameter">val</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token comment">// 更新内部值</span>
         <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">updateFormModel</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>
       <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">methods</span><span class="token operator">:</span> <span class="token punctuation">{</span>
       <span class="token function">updateValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token comment">// 更新外部值，需要变更引用才会生效</span>
         <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">$emit</span><span class="token punctuation">(</span><span class="token string">&quot;change&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token operator">...</span><span class="token keyword">this</span><span class="token punctuation">.</span>formModel <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -576,9 +576,9 @@
     <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token keyword">return</span> <span class="token punctuation">{</span>
         <span class="token comment">// 表单值</span>
-        formModel<span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">formModel</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
         <span class="token comment">// 配置表单相关的属性和数据</span>
-        formComponentList<span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token literal-property property">formComponentList</span><span class="token operator">:</span> <span class="token punctuation">[</span>
           <span class="token comment">// 这里参考前面内容，没有做任何变更，篇幅原因省略</span>
         <span class="token punctuation">]</span>
       <span class="token punctuation">}</span><span class="token punctuation">;</span>
@@ -595,7 +595,7 @@
           第14章 实战：使用 Webpack 或 Vue CLI 搭建多页应用
         </a>
         →
-      </span></p></div>  <div class="gitalk-container theme-default-content"><div id="gitalk-container" class="content"></div></div></main> <div id="kitty-container"><span><div role="tooltip" id="el-popover-9692" aria-hidden="true" class="el-popover el-popper" style="width:undefinedpx;display:none;"><!----><img src="https://github-imglib-1255459943.cos.ap-chengdu.myqcloud.com/2code2.jpg" class="image"> <div class="text">牡羊猪的猫粮罐</div> </div><span class="el-popover__reference-wrapper"><div id="kitty" style="background:url(https://github-imglib-1255459943.cos.ap-chengdu.myqcloud.com/assets/img/kitty2.svg);"></div></span></span> <div class="el-dialog__wrapper" style="display:none;"><div role="dialog" aria-modal="true" aria-label="牡羊猪是这样渐渐胖成猪的喵（点击图片可以切换噢）" class="el-dialog" style="margin-top:15vh;"><div class="el-dialog__header"><span class="el-dialog__title">牡羊猪是这样渐渐胖成猪的喵（点击图片可以切换噢）</span><button type="button" aria-label="Close" class="el-dialog__headerbtn"><i class="el-dialog__close el-icon el-icon-close"></i></button></div><!----><!----></div></div></div></div><div class="global-ui"></div></div>
-    <script src="/vue-ebook/assets/js/app.4a56433d.js" defer></script><script src="/vue-ebook/assets/js/2.a5c7c816.js" defer></script><script src="/vue-ebook/assets/js/3.a4a7a326.js" defer></script><script src="/vue-ebook/assets/js/12.cb7cf307.js" defer></script>
+      </span></p></div>  <div class="gitalk-container theme-default-content"><div id="gitalk-container" class="content"></div></div></main> <div id="kitty-container"><span><div role="tooltip" id="el-popover-3897" aria-hidden="true" class="el-popover el-popper" style="width:undefinedpx;display:none;"><!----><img src="https://github-imglib-1255459943.cos.ap-chengdu.myqcloud.com/2code2.jpg" class="image"> <div class="text">牡羊猪的猫粮罐</div> </div><span class="el-popover__reference-wrapper"><div id="kitty" style="background:url(https://github-imglib-1255459943.cos.ap-chengdu.myqcloud.com/assets/img/kitty1.svg);"></div></span></span> <div class="el-dialog__wrapper" style="display:none;"><div role="dialog" aria-modal="true" aria-label="牡羊猪是这样渐渐胖成猪的喵（点击图片可以切换噢）" class="el-dialog" style="margin-top:15vh;"><div class="el-dialog__header"><span class="el-dialog__title">牡羊猪是这样渐渐胖成猪的喵（点击图片可以切换噢）</span><button type="button" aria-label="Close" class="el-dialog__headerbtn"><i class="el-dialog__close el-icon el-icon-close"></i></button></div><!----><!----></div></div></div></div><div class="global-ui"></div></div>
+    <script src="/vue-ebook/assets/js/app.d42cfe3d.js" defer></script><script src="/vue-ebook/assets/js/2.2a4d101b.js" defer></script><script src="/vue-ebook/assets/js/3.9083e877.js" defer></script><script src="/vue-ebook/assets/js/12.73df520f.js" defer></script>
   </body>
 </html>
